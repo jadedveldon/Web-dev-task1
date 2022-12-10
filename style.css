@@ -1,0 +1,44 @@
+.Navbar{
+    display: flex;
+    margin-top: 2%;
+    border-bottom: 1px solid rgb(176, 176, 176);
+    margin-left: 2%;
+}
+.main-content{
+    display: flex;
+}
+.right-content{
+    display: flex;
+}
+.left-content{
+    display: flex;   
+}
+.content{
+    display: inline;
+    padding-left: 2%;
+}
+
+#Nav-Head{
+    font-size: 230%;
+}
+#Nav-sub{
+    font-size: 120%;  
+}
+#profile-pic{
+    height: 40%;
+    width:30%
+}
+.alphabets {
+    display: flex;
+}
+  
+.alphabets > button {
+    background-color: DodgerBlue;
+    color: white;
+    width: 40px;
+    margin: 3px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 15px;
+    border: none;
+  }

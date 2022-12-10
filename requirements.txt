@@ -1,0 +1,9 @@
+make the add employee button functional with the form 
+set the page design properly
+write data to local storage 
+read data and bring in to manipulate and apply filters
+dynamically update the brackets nums
+first work on side filters and get them functional 
+next use the same filters and develop them more to apply specific alphabet level filters
+make cards display and add hyperlinks to the buttons 
+make responsive 
