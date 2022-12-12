@@ -1,7 +1,7 @@
-make the add employee button functional with the form 
-set the page design properly
-write data to local storage 
-read data and bring in to manipulate and apply filters
+make the add employee button functional with the form (done)
+set the page design properly (time lagega end me karenge)
+write data to local storage (HELL YES DONE)
+read data and bring in to manipulate and apply filters (ye abhi karna hai)
 dynamically update the brackets nums
 first work on side filters and get them functional 
 next use the same filters and develop them more to apply specific alphabet level filters
