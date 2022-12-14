@@ -39,68 +39,69 @@
   <div class="side-filter">
     <dl>
       <dt>Departments</dt>
-      <dd>IT</dd>
-      <dd>Human Resources</dd>
-      <dd>MD</dd>
-      <dd>Sales</dd>
+      <dd id = "IT" onclick="SideFilter('IT','department')">IT</dd>
+      <dd id = "HR" onclick="SideFilter('Human Resource','department')">Human Resources</dd>
+      <dd id = "MD" onclick="SideFilter('MD','department')">MD</dd>
+      <dd id = "Sales" onclick="SideFilter('Sales','department')">Sales</dd>
     </dl>
     <dl>
       <dt>Office</dt>
-      <dd>Seattle</dd>
-      <dd>India</dd>
+      <dd id = "Seattle" onclick="SideFilter('Seattle','office')">Seattle</dd>
+      <dd id = "India" onclick="SideFilter('India','office')">India</dd>
     </dl>
     <dt>Job Titles</dt>
-      <dd>SharePoint Practice Head</dd>
-      <dd>.Net Development Lead</dd>
-      <dd>Recruiting Expert</dd>
-      <dd>BI Development</dd>
-      <dd>Business Development</dd>
+      <dd id = "SPPH" onclick="SideFilter('SharePoint PracticeHead','title')">SharePoint Practice Head</dd>
+      <dd id = "DOT" onclick="SideFilter('.Net Development Lead','title')">.Net Development Lead</dd>
+      <dd id = "RE" onclick="SideFilter('Recruiting Expert','title')">Recruiting Expert</dd>
+      <dd id = "BID" onclick="SideFilter('BI Development','title')">BI Development</dd>
+      <dd id = "BD" onclick="SideFilter('Business Development','title')">Business Development</dd>
       <a>Show more</a>
     </dl>
   </div>
   <div class="main-filter">
     <div class="alphabets">
-    <button>A</button>
-    <button>B</button>
-    <button>C</button>
-    <button>D</button>
-    <button>E</button>
-    <button>F</button>
-    <button>G</button>
-    <button>H</button>
-    <button>I</button>
-    <button>J</button>
-    <button>K</button>
-    <button>L</button>
-    <button>M</button>
-    <button>N</button>
-    <button>O</button>
-    <button>P</button>
-    <button>Q</button>
-    <button>R</button>
-    <button>S</button>
-    <button>T</button>
-    <button>U</button>
-    <button>V</button>
-    <button>W</button>
-    <button>X</button>
-    <button>Y</button>
-    <button>Z</button>
+    <button onclick="window.location.reload();"><img src="./Image/person.png" height="15px" width="15px"></button>
+    <button onclick="alphabetFilter('A')">A</button>
+    <button onclick="alphabetFilter('B')">B</button>
+    <button onclick="alphabetFilter('C')">C</button>
+    <button onclick="alphabetFilter('D')">D</button>
+    <button onclick="alphabetFilter('E')">E</button>
+    <button onclick="alphabetFilter('F')">F</button>
+    <button onclick="alphabetFilter('G')">G</button>
+    <button onclick="alphabetFilter('H')">H</button>
+    <button onclick="alphabetFilter('I')">I</button>
+    <button onclick="alphabetFilter('J')">J</button>
+    <button onclick="alphabetFilter('K')">K</button>
+    <button onclick="alphabetFilter('L')">L</button>
+    <button onclick="alphabetFilter('M')">M</button>
+    <button onclick="alphabetFilter('N')">N</button>
+    <button onclick="alphabetFilter('O')">O</button>
+    <button onclick="alphabetFilter('P')">P</button>
+    <button onclick="alphabetFilter('Q')">Q</button>
+    <button onclick="alphabetFilter('R')">R</button>
+    <button onclick="alphabetFilter('S')">S</button>
+    <button onclick="alphabetFilter('T')">T</button>
+    <button onclick="alphabetFilter('U')">U</button>
+    <button onclick="alphabetFilter('V')">V</button>
+    <button onclick="alphabetFilter('W')">W</button>
+    <button onclick="alphabetFilter('X')">X</button>
+    <button onclick="alphabetFilter('Y')">Y</button>
+    <button onclick="alphabetFilter('Z')">Z</button>
     </div>
     <div class="search-filter">
       <label>Search</label>
-      <input type="text" placeholder="Enter any keyword">
+      <input oninput = "myHandler();" onchange = "myHandler();" onkeypress = "myHandler();" id="SearchField" type="text" placeholder="Enter any keyword">
       <button id ="clear">Clear</button>
       <label>Filter By</label>
       <select name="categories" id="categories">
-        <option value="name">Name</option>
+        <option value="first_name" selected>Name</option>
         <option value="surname">Surname</option>
-        <option value="preferred name">Preferred Name</option>
+        <option value="preferred_name">Preferred Name</option>
         <option value="email">Email</option>
-        <option value=jobtitle >Job Title</option>
+        <option value="title" >Job Title</option>
         <option value="office" >Office</option>
         <option value="department" >Department</option>
-        <option value="phonenumber" >Phone Number</option>
+        <option value="number" >Phone Number</option>
         <option value="skypeID">Skype Id</option>
       </select>
       <button id ="add-emp" data-toggle="modal" data-target="#employeeForm">Add Employee</button>
@@ -135,7 +136,7 @@
             <div class="form-group">
               <label for="title">Job Title</label>
               <select name="title" class="form-select form-select-lg mb-3" id="title">
-                <option selected="selected" value="SharePoint PracticeHead">SharePoint Practice Head</option>
+                <option value="SharePoint PracticeHead" selected>SharePoint Practice Head</option>
                 <option value=".Net Development Lead">.Net Development Lead</option>
                 <option value="Recruiting Expert">Recruiting Expert</option>
                 <option value="BI Development">BI Development</option>
@@ -145,14 +146,14 @@
           <div class="form-group">
             <label for="office">Office</label>
             <select name="office" class="form-select form-select-lg mb-3" id="office">
-              <option selected="selected" value="India">India</option>
+              <option value="India" selected>India</option>
               <option value="Seattle">Seattle</option>
             </select>
            </div>
           <div class="form-group">
             <label for="department">Department</label>
             <select name="department" class="form-select form-select-lg mb-3" id="department">
-              <option selected="selected" value="IT">IT</option>
+              <option value="IT" selected>IT</option>
               <option value="Sales">Sales</option>
               <option value="Human Resource">Human Resource</option>
               <option value="MD">MD</option>
@@ -252,7 +253,7 @@
             <div class="form-group">
               <label for="title">Job Title</label>
               <select name="title" class="form-select form-select-lg mb-3" id="EditTitle">
-                <option selected="selected" value="Share Point Practice Head">SharePoint Practice Head</option>
+                <option value="Share Point Practice Head" selected>SharePoint Practice Head</option>
                 <option value=".Net Development Lead">.Net Development Lead</option>
                 <option value="Recruiting Expert">Recruiting Expert</option>
                 <option value="BI Development">BI Development</option>
@@ -262,14 +263,14 @@
           <div class="form-group">
             <label for="office">Office</label>
             <select name="office" class="form-select form-select-lg mb-3" id="EditOffice">
-              <option selected="selected" value="India">India</option>
+              <option value="India" selected>India</option>
               <option value="Seattle">Seattle</option>
             </select>
            </div>
           <div class="form-group">
             <label for="department">Department</label>
             <select name="department" class="form-select form-select-lg mb-3" id="EditDepartment">
-              <option selected="selected" value="IT">IT</option>
+              <option value="IT" selected>IT</option>
               <option value="Sales">Sales</option>
               <option value="Human Resource">Human Resource</option>
               <option value="MD">MD</option>

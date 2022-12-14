@@ -65,6 +65,7 @@ let displayBox = document.getElementById("card-display-box");
 let displayInfo;
 let temp;
 let len = currentEntries.length;
+let countIT = 0, countHR = 0, countMD = 0, countSales = 0, countSeattle = 0, countIndia = 0, countSSPH = 0, countDot = 0, countRE = 0, countBID = 0, countBD = 0;
 for (let i = 0; i < len; i++) {
     displayInfo = currentEntries[i];
     let p_name = displayInfo["preferred_name"];
@@ -72,6 +73,41 @@ for (let i = 0; i < len; i++) {
     let dept = displayInfo["department"];
     let baseImg =  displayInfo["ImgString"];
     let id = i;
+    let office = displayInfo["office"];
+
+    if(dept == "IT"){
+        countIT += 1;
+    }
+    if(dept == "Human Resource"){
+        countHR += 1;
+    }
+    if(dept == "MD"){
+        countMD += 1;
+    }
+    if(dept == "Sales"){
+        countSales += 1;
+    }
+    if(office == "India"){
+        countIndia += 1;
+    }
+    if(office == "Seattle"){
+        countSeattle += 1;
+    }
+    if(designation == "SharePoint PracticeHead"){
+        countSSPH += 1;
+    }
+    if(designation == ".Net Development Lead"){
+        countDot += 1;
+    }
+    if(designation == "Recruiting Expert"){
+        countRE += 1;
+    }
+    if(designation == "BI Development"){
+        countBID += 1;
+    }
+    if(designation == "Business Development"){
+        countBD += 1;
+    }
 
     temp = returnCardHtml(p_name,designation,dept,baseImg,id); 
     
@@ -79,7 +115,17 @@ for (let i = 0; i < len; i++) {
 
 }
 
-
+document.getElementById("IT").innerHTML += "("+countIT+")"; 
+document.getElementById("HR").innerHTML += "("+countHR+")"; 
+document.getElementById("MD").innerHTML += "("+countMD+")";
+document.getElementById("Sales").innerHTML += "("+countSales+")"; 
+document.getElementById("Seattle").innerHTML += "("+countSeattle+")"; 
+document.getElementById("India").innerHTML += "("+countIndia+")"; 
+document.getElementById("SPPH").innerHTML += "("+countSSPH+")"; 
+document.getElementById("DOT").innerHTML += "("+countDot+")"; 
+document.getElementById("RE").innerHTML += "("+countRE+")"; 
+document.getElementById("BID").innerHTML += "("+countBID+")";
+document.getElementById("BD").innerHTML += "("+countBD+")";  
 
 function capitalize(s)
 {
@@ -91,8 +137,7 @@ function capitalize(s)
 //submit button on the modal form works this
 function AddEmployee() {
 
-    var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
-    if (existingEntries == null) existingEntries = [];
+    var existingEntries = JSON.parse(localStorage.getItem("allEntries")) || [];
     var first_name = document.getElementById("first_name").value;
     var surname = document.getElementById("surname").value;
     var preferred_name = document.getElementById("preferred_name").value;
@@ -160,8 +205,7 @@ function EditEmployee(){
     document.getElementById("EditOffice").value = obj["office"];
     document.getElementById("EditDepartment").value = obj["department"];
     document.getElementById("EditNumber").value = obj["number"];
-    document.getElementById("EditSkype").value =obj["skypeID"];                 
-    //document.getElementById("EditPicture").value = obj[""];
+    document.getElementById("EditSkype").value =obj["skypeID"]; 
     console.log("test");
 
 }
@@ -173,7 +217,9 @@ function deleteEmployee(){
     let id = CurrentID;
     console.log("working?");
     let firstHalf = currentEntries.slice(0,id);
-    let secondHalf = currentEntries.slice(id+1);
+    console.log(firstHalf);
+    let secondHalf = currentEntries.slice(id);
+    secondHalf.shift();
     let finalArray = firstHalf.concat(secondHalf);
     localStorage.setItem("allEntries", JSON.stringify(finalArray));
     window.location.reload();
@@ -224,3 +270,92 @@ function CommitChanges(){
     localStorage.setItem("allEntries", JSON.stringify(currentEntries));
 
     }
+
+
+
+function SideFilter(value,category){
+    displayBox.innerHTML = " ";
+    let FilterEntries = [];
+    for (let i = 0; i < len; i++) {
+        displayInfo = currentEntries[i];
+        if (displayInfo[category] == value){
+            FilterEntries.push(displayInfo);
+        } 
+    }
+    var templen = FilterEntries.length;
+    for (let i = 0; i < templen; i++) {
+        displayInfo = FilterEntries[i];
+        let p_name = displayInfo["preferred_name"];
+        let designation = displayInfo["title"];
+        let dept = displayInfo["department"];
+        let baseImg =  displayInfo["ImgString"];
+        let id = i;
+    
+        temp = returnCardHtml(p_name,designation,dept,baseImg,id); 
+        
+        displayBox.innerHTML += temp;
+    
+    }
+
+}
+
+function alphabetFilter(alphabet){
+    displayBox.innerHTML = " ";
+    let category = document.getElementById("categories").value;
+    let len = currentEntries.length;
+    alphabet = alphabet.toLowerCase();
+    let FilterEntries = [];
+    for (let i = 0; i < len; i++){
+        let entry = currentEntries[i];
+        let temp = entry[category];
+        temp = temp.toLowerCase();
+        if(temp[0] == alphabet){
+            FilterEntries.push(entry);
+
+        }
+       
+    }
+    var templen = FilterEntries.length;
+    for (let i = 0; i < templen; i++) {
+        displayInfo = FilterEntries[i];
+        let p_name = displayInfo["preferred_name"];
+        let designation = displayInfo["title"];
+        let dept = displayInfo["department"];
+        let baseImg =  displayInfo["ImgString"];
+        let id = i;
+    
+        temp = returnCardHtml(p_name,designation,dept,baseImg,id); 
+        
+        displayBox.innerHTML += temp;
+    
+    }
+}
+
+function myHandler(){
+   let KeyWord = document.getElementById("SearchField").value;
+   let category = document.getElementById("categories").value;
+   displayBox.innerHTML = " ";
+    let FilterEntries = [];
+    for (let i = 0; i < len; i++) {
+        displayInfo = currentEntries[i];
+        let checker = displayInfo[category];
+        let l = KeyWord.length;
+        if (checker.slice(0,l) == KeyWord){
+            FilterEntries.push(displayInfo);
+        } 
+    }
+    var templen = FilterEntries.length;
+    for (let i = 0; i < templen; i++) {
+        displayInfo = FilterEntries[i];
+        let p_name = displayInfo["preferred_name"];
+        let designation = displayInfo["title"];
+        let dept = displayInfo["department"];
+        let baseImg =  displayInfo["ImgString"];
+        let id = i;
+    
+        temp = returnCardHtml(p_name,designation,dept,baseImg,id); 
+        
+        displayBox.innerHTML += temp;
+    
+    }
+}

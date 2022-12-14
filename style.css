@@ -6,6 +6,10 @@
 }
 .main-content{
     display: flex;
+    margin-top: 30px;
+}
+.note{
+    display: flex;
 }
 .right-content{
     display: flex;
@@ -36,9 +40,9 @@
     background-color: DodgerBlue;
     color: white;
     width: 40px;
-    margin: 3px;
+    margin: 1px;
     text-align: center;
-    line-height: 30px;
+    line-height: 40px;
     font-size: 15px;
     border: none;
   }
@@ -57,7 +61,15 @@
     background-color: #efeeeeee;
     width: 100px;
     height: 80px;
-    margin: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+dd{
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .card-title{
     margin-top: 3px;
@@ -90,3 +102,8 @@
 .form-group{
     display: flex;
 }
+.side-filter{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
