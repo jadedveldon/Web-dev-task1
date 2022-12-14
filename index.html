@@ -25,7 +25,7 @@
   </div>
   <div class="left-content">
         <div class="username">
-          <p>Welcome, Andrew Philips</p>
+          <p id="username"><b id = 'welcome'>Welcome,</b> Andrew Philips</p>
         </div>
         <div>
           <img id="profile-pic" src="Image\AndrewRussel.jpg" >
@@ -91,7 +91,7 @@
     <div class="search-filter">
       <label>Search</label>
       <input oninput = "myHandler();" onchange = "myHandler();" onkeypress = "myHandler();" id="SearchField" type="text" placeholder="Enter any keyword">
-      <button id ="clear">Clear</button>
+      <button id ="clear" class="btn btn-success">Clear</button>
       <label>Filter By</label>
       <select name="categories" id="categories">
         <option value="first_name" selected>Name</option>
@@ -104,7 +104,7 @@
         <option value="number" >Phone Number</option>
         <option value="skypeID">Skype Id</option>
       </select>
-      <button id ="add-emp" data-toggle="modal" data-target="#employeeForm">Add Employee</button>
+      <button class="btn btn-primary" id ="add-emp" data-toggle="modal" data-target="#employeeForm">Add Employee</button>
     </div>
 
 
@@ -176,7 +176,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" value="Submit" class="btn btn-primary" onclick="AddEmployee()">Submit</button>
+            <button type="submit" value="Submit" class="btn btn-success" onclick="AddEmployee()">Submit</button>
           </form>
           </div>
         </div>
@@ -216,8 +216,8 @@
 
           </div>
           <div class="modal-footer">
-            <button type="submit" onclick="deleteEmployee()" class="btn btn-secondary" data-dismiss="modal">Delete</button>
-            <button type="button" id="editButton" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#employeeEditForm" onclick="EditEmployee()">Edit</button>
+            <button type="submit" onclick="deleteEmployee()" class="btn btn-danger" data-dismiss="modal">Delete</button>
+            <button type="button" id="editButton" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#employeeEditForm" onclick="EditEmployee()">Edit</button>
           </form>
           </div>
         </div>
@@ -293,7 +293,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" value="Submit" class="btn btn-primary" onclick="CommitChanges()">Submit</button>
+            <button type="submit" value="Submit" class="btn btn-success" onclick="CommitChanges()">Submit</button>
           </form>
           </div>
         </div>

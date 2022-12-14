@@ -176,15 +176,15 @@ function AddEmployee() {
 let CurrentID;
 function ViewEmployee(id){
     let obj = currentEntries[id];
-    document.getElementById("DisplayName").innerHTML = `<label for="first_name">Name:</label><p>` + obj["first_name"] + `</p>`;
-    document.getElementById("DisplaySurname").innerHTML = `<label for="surname">Surname</label><p>` + obj["surname"] + `</p>`;
-    document.getElementById("DisplayPreferredName").innerHTML = `<label for="preferred_name">Preferred Name</label><p>` + obj["preferred_name"] + `</p>`;
-    document.getElementById("DisplayEmail").innerHTML = `<label for="email">Email</label><p>` + obj["email"] + `</p>`;
-    document.getElementById("DisplayTitle").innerHTML = `<label for="title">Job Title</label><p>` + obj["title"] + `</p>`;
-    document.getElementById("DisplayOffice").innerHTML = `<label for="office">Office</label><p>` + obj["office"] + `</p>`;
-    document.getElementById("DisplayDepartment").innerHTML = `<label for="department">Department</label><p>` + obj["department"] + `</p>`;
-    document.getElementById("DisplayNumber").innerHTML = `<label for="number">Number</label><p>` + obj["number"] + `</p>`;
-    document.getElementById("DisplaySkype").innerHTML = `<label for="skypeID">Skype ID</label><p>` + obj["skypeID"] + `</p>`;
+    document.getElementById("DisplayName").innerHTML = `<label for="first_name">Name:&nbsp;</label><p>` + obj["first_name"] + `</p>`;
+    document.getElementById("DisplaySurname").innerHTML = `<label for="surname">Surname:&nbsp;</label><p>` + obj["surname"] + `</p>`;
+    document.getElementById("DisplayPreferredName").innerHTML = `<label for="preferred_name">Preferred Name:&nbsp;</label><p>` + obj["preferred_name"] + `</p>`;
+    document.getElementById("DisplayEmail").innerHTML = `<label for="email">Email:&nbsp;</label><p>` + obj["email"] + `</p>`;
+    document.getElementById("DisplayTitle").innerHTML = `<label for="title">Job Title:&nbsp;</label><p>` + obj["title"] + `</p>`;
+    document.getElementById("DisplayOffice").innerHTML = `<label for="office">Office:&nbsp;</label><p>` + obj["office"] + `</p>`;
+    document.getElementById("DisplayDepartment").innerHTML = `<label for="department">Department:&nbsp;</label><p>` + obj["department"] + `</p>`;
+    document.getElementById("DisplayNumber").innerHTML = `<label for="number">Number:&nbsp;</label><p>` + obj["number"] + `</p>`;
+    document.getElementById("DisplaySkype").innerHTML = `<label for="skypeID">Skype ID:&nbsp;</label><p>` + obj["skypeID"] + `</p>`;
     document.getElementById("DisplayPicture").innerHTML = `<img src="data:image/png;base64,`+ obj["ImgString"] +`" height="100px" width="100px">`;
     CurrentID = id;
     base64String = "check";

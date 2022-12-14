@@ -3,10 +3,12 @@
     margin-top: 2%;
     border-bottom: 1px solid rgb(176, 176, 176);
     margin-left: 2%;
+    width: auto;
 }
 .main-content{
     display: flex;
     margin-top: 30px;
+    border-left: 50px;
 }
 .note{
     display: flex;
@@ -15,35 +17,55 @@
     display: flex;
 }
 .left-content{
-    display: flex;   
+    top:50px;
+    position: absolute;
+    left: 1000px;
+    display: flex;  
+    float: left; 
+    width: 450px;
+}
+#username{
+    font-size: 30px;
+}
+#welcome{
+    color: rgb(62, 181, 235);
+    font-weight: 100;
+    margin-top: 100px;
+}
+#Nav-Head{
+    color: rgb(62, 181, 235);
+    font-weight: 100;
+    margin-bottom: 0px;
+    font-size: 35px;
 }
 .content{
     display: inline;
     padding-left: 2%;
-}
-
-#Nav-Head{
-    font-size: 230%;
+    width: 500px;
 }
 #Nav-sub{
-    font-size: 120%;  
+    font-size: 20px;  
 }
 #profile-pic{
     height: 70px;
-    width: 70px
+    width: 70px;
+    margin-left: 40px;
 }
 .alphabets {
     display: flex;
+    margin-bottom: 10px;
 }
-  
+.search-filter{
+    margin-bottom: 10px;
+} 
 .alphabets > button {
     background-color: DodgerBlue;
     color: white;
     width: 40px;
-    margin: 1px;
+    margin: 2px;
     text-align: center;
     line-height: 40px;
-    font-size: 15px;
+    font-size: 18px;
     border: none;
   }
 #card-display-box{
