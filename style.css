@@ -25,8 +25,8 @@
     font-size: 120%;  
 }
 #profile-pic{
-    height: 40%;
-    width:30%
+    height: 70px;
+    width: 70px
 }
 .alphabets {
     display: flex;
@@ -42,3 +42,51 @@
     font-size: 15px;
     border: none;
   }
+#card-display-box{
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid rgb(200, 200, 200);
+    height: 450px;
+    margin: 10px;
+    align-content: flex-start;
+}
+.card-body{
+    display: flex;
+}
+.card{
+    background-color: #efeeeeee;
+    width: 100px;
+    height: 80px;
+    margin: 10px;
+}
+.card-title{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.card-subtitle{
+    margin-top: 3px;
+    margin-bottom: 3px;
+    height: auto;
+    width: auto;
+}
+.card-img  {
+    overflow: hidden;
+    max-height: 70px;  
+    max-width: 70px;
+    width: auto;
+    height: auto;
+}
+.card-dp{
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.card-content{
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.fa{
+    color:  #8d8d8dee;
+}
+.form-group{
+    display: flex;
+}

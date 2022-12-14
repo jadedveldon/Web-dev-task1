@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="/image/fevicon.jpg">
+  <script src="https://kit.fontawesome.com/887f33e599.js" crossorigin="anonymous"></script>
 </head>
 <body><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
@@ -133,26 +135,26 @@
             <div class="form-group">
               <label for="title">Job Title</label>
               <select name="title" class="form-select form-select-lg mb-3" id="title">
-                <option value="SharePointPracticeHead">SharePoint Practice Head</option>
-                <option value=".NetDevelopmentLead">.Net Development Lead</option>
-                <option value="RecruitingExpert">Recruiting Expert</option>
-                <option value="BIDevelopment">BI Development</option>
-                <option value="BusinessDevelopment">Business Development</option>
+                <option selected="selected" value="SharePoint PracticeHead">SharePoint Practice Head</option>
+                <option value=".Net Development Lead">.Net Development Lead</option>
+                <option value="Recruiting Expert">Recruiting Expert</option>
+                <option value="BI Development">BI Development</option>
+                <option value="Business Development">Business Development</option>
               </select>
           </div>
           <div class="form-group">
             <label for="office">Office</label>
             <select name="office" class="form-select form-select-lg mb-3" id="office">
-              <option value="india">India</option>
-              <option value="seattle">Seattle</option>
+              <option selected="selected" value="India">India</option>
+              <option value="Seattle">Seattle</option>
             </select>
            </div>
           <div class="form-group">
             <label for="department">Department</label>
             <select name="department" class="form-select form-select-lg mb-3" id="department">
-              <option value="IT">IT</option>
-              <option value="sales">Sales</option>
-              <option value="HumanResource">Human Resource</option>
+              <option selected="selected" value="IT">IT</option>
+              <option value="Sales">Sales</option>
+              <option value="Human Resource">Human Resource</option>
               <option value="MD">MD</option>
             </select>
           </div>
@@ -166,7 +168,7 @@
           </div>
           <div class="form-group">
             <label for="inputFile" class="form-label">Upload Profile Picture</label>
-            <input class="form-control" type="file" id="formFile" accept="image/*">
+            <input type="file" class="formFile" accept="image/*">
           </div>
             
 
@@ -181,11 +183,128 @@
     </div>
 
 
+    <div id="employeeViewForm" class="modal fade" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1>View Details</h1>
+          </div>
+          <div class="modal-body">
+
+            <form>
+              <div class="form-group" id="DisplayPicture">
+              </div>
+              <div class="form-group" id="DisplayName">
+            </div>
+            <div class="form-group" id="DisplaySurname">
+          </div>
+          <div class="form-group" id="DisplayPreferredName">
+          </div>
+            <div class="form-group" id="DisplayEmail">
+            </div>
+            <div class="form-group" id="DisplayTitle">
+          </div>
+          <div class="form-group" id="DisplayOffice">
+           </div>
+          <div class="form-group" id="DisplayDepartment">
+          </div>
+          <div class="form-group" id="DisplayNumber">
+          </div>
+          <div class="form-group" id="DisplaySkype">
+          </div>       
+
+          </div>
+          <div class="modal-footer">
+            <button type="submit" onclick="deleteEmployee()" class="btn btn-secondary" data-dismiss="modal">Delete</button>
+            <button type="button" id="editButton" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#employeeEditForm" onclick="EditEmployee()">Edit</button>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="employeeEditForm" class="modal fade" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1>Add Details</h1>
+          </div>
+          <div class="modal-body">
+
+            <form>
+              <div class="form-group">
+                <label for="first_name">Name</label>
+                <input type="text" class="form-control" id="EditName" placeholder="Enter your Name" required>
+            </div>
+            <div class="form-group">
+              <label for="surname">Surname</label>
+              <input type="text" class="form-control" id="EditSurname" placeholder="Enter your Surname" required>
+          </div>
+          <div class="form-group">
+            <label for="preferred_name">Preferred Name</label>
+            <input type="text" class="form-control" id="EditPreferredName" placeholder="Enter your name">
+          </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" id="EditEmail" placeholder="Enter your Email" required>
+            </div>
+            <div class="form-group">
+              <label for="title">Job Title</label>
+              <select name="title" class="form-select form-select-lg mb-3" id="EditTitle">
+                <option selected="selected" value="Share Point Practice Head">SharePoint Practice Head</option>
+                <option value=".Net Development Lead">.Net Development Lead</option>
+                <option value="Recruiting Expert">Recruiting Expert</option>
+                <option value="BI Development">BI Development</option>
+                <option value="Business Development">Business Development</option>
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="office">Office</label>
+            <select name="office" class="form-select form-select-lg mb-3" id="EditOffice">
+              <option selected="selected" value="India">India</option>
+              <option value="Seattle">Seattle</option>
+            </select>
+           </div>
+          <div class="form-group">
+            <label for="department">Department</label>
+            <select name="department" class="form-select form-select-lg mb-3" id="EditDepartment">
+              <option selected="selected" value="IT">IT</option>
+              <option value="Sales">Sales</option>
+              <option value="Human Resource">Human Resource</option>
+              <option value="MD">MD</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="number">Number</label>
+            <input type="text" class="form-control" id="EditNumber" placeholder="Enter your Number" required>
+          </div>
+          <div class="form-group">
+            <label for="skypeID">Skype ID</label>
+            <input type="text" class="form-control" id="EditSkype" placeholder="Enter your Skype ID" required>
+          </div>
+          <div class="form-group">
+            <label for="inputFile" class="form-label">Upload Profile Picture</label>
+            <input type="file" id="formFileEdit" accept="image/*">
+          </div>
+            
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" value="Submit" class="btn btn-primary" onclick="CommitChanges()">Submit</button>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <div class="note">
       <b>Note:</b><p>Please use advanced filter option to refine your results</p>
     </div>
-    <div class="card-display-box">
-        
+    <div id="card-display-box" style="width: 120rem;">
+
     </div>
   </div>
 </div> 
@@ -194,8 +313,6 @@
 
 
 <script src="function.js"></script>
-
-
-
 </body>
 </html>
+
