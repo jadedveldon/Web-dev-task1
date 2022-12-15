@@ -25,7 +25,7 @@
   </div>
   <div class="left-content">
         <div class="username">
-          <p id="username"><b id = 'welcome'>Welcome,</b> Andrew Philips</p>
+          <p id="userName"><b id = 'welcome'>Welcome,</b> Andrew Philips</p>
         </div>
         <div>
           <img id="profile-pic" src="Image\AndrewRussel.jpg" >
@@ -89,10 +89,13 @@
     <button onclick="alphabetFilter('Z')">Z</button>
     </div>
     <div class="search-filter">
-      <label>Search</label>
+      <div class="seach-box">
+      <label style="font-size: medium;">Search:</label>
       <input oninput = "myHandler();" onchange = "myHandler();" onkeypress = "myHandler();" id="SearchField" type="text" placeholder="Enter any keyword">
-      <button id ="clear" class="btn btn-success">Clear</button>
-      <label>Filter By</label>
+      <button id ="clear" class="btn btn-success" onclick="window.location.reload();">Clear</button>
+    </div>
+      <div class="category-filter">
+      <label style="font-size: medium;">Filter By</label>
       <select name="categories" id="categories">
         <option value="first_name" selected>Name</option>
         <option value="surname">Surname</option>
@@ -104,6 +107,7 @@
         <option value="number" >Phone Number</option>
         <option value="skypeID">Skype Id</option>
       </select>
+      </div>
       <button class="btn btn-primary" id ="add-emp" data-toggle="modal" data-target="#employeeForm">Add Employee</button>
     </div>
 

@@ -24,7 +24,19 @@
     float: left; 
     width: 450px;
 }
-#username{
+.category-filter{
+    margin-top  : 5px;
+}
+#add-emp{
+margin-left: 145px;
+}
+.search-filter > label {
+    font-size: 20px;
+}
+.username{
+    margin-top: 35px;
+}
+#userName{
     font-size: 30px;
 }
 #welcome{
@@ -49,15 +61,22 @@
 #profile-pic{
     height: 70px;
     width: 70px;
-    margin-left: 40px;
+    margin-left: 20px;
 }
 .alphabets {
     display: flex;
     margin-bottom: 10px;
 }
 .search-filter{
+    margin-top: 25px;
+    margin-left: 20px;
     margin-bottom: 10px;
+    display: flex;
+    gap: 200px;
 } 
+#clear{
+    margin-left: 20px;
+}
 .alphabets > button {
     background-color: DodgerBlue;
     color: white;
@@ -72,7 +91,7 @@
     display: flex;
     flex-wrap: wrap;
     border: 1px solid rgb(200, 200, 200);
-    height: 450px;
+    height: 400px;
     margin: 10px;
     align-content: flex-start;
 }
