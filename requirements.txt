@@ -7,3 +7,9 @@ first work on side filters and get them functional
 next use the same filters and develop them more to apply specific alphabet level filters
 make cards display and add hyperlinks to the buttons 
 make responsive 
+
+
+
+
+make responsive 
+

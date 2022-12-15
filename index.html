@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Saketa</title>
   <link rel="stylesheet" href="style.css">
@@ -11,313 +12,343 @@
   <link rel="icon" type="image/x-icon" href="/image/fevicon.jpg">
   <script src="https://kit.fontawesome.com/887f33e599.js" crossorigin="anonymous"></script>
 </head>
-<body><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
-<div class = "Navbar">
-  <div class="right-content">
-      <div class = "logo">
-        <img id="saketa-logo" height="100" width="200"  src="https://cdn.saketa.com/wp-content/uploads/2022/12/saketa-logo.svg">
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+
+  <div class="Navbar">
+    <div class="right-content">
+      <div class="logo">
+        <img id="saketa-logo" height="100" width="200"
+          src="https://cdn.saketa.com/wp-content/uploads/2022/12/saketa-logo.svg">
       </div>
-      <div class = "content">
-        <p id = "Nav-Head">Employee Directory</p>
-        <p id = "Nav-sub">The ultimate People Directory Experience</p>
-      </div>  
-  </div>
-  <div class="left-content">
-        <div class="username">
-          <p id="userName"><b id = 'welcome'>Welcome,</b> Andrew Philips</p>
-        </div>
-        <div>
-          <img id="profile-pic" src="Image\AndrewRussel.jpg" >
-        </div>
-        </div>
-</div>
-
-
-
-<div class="main-content">
-  <div class="side-filter">
-    <dl>
-      <dt>Departments</dt>
-      <dd id = "IT" onclick="SideFilter('IT','department')">IT</dd>
-      <dd id = "HR" onclick="SideFilter('Human Resource','department')">Human Resources</dd>
-      <dd id = "MD" onclick="SideFilter('MD','department')">MD</dd>
-      <dd id = "Sales" onclick="SideFilter('Sales','department')">Sales</dd>
-    </dl>
-    <dl>
-      <dt>Office</dt>
-      <dd id = "Seattle" onclick="SideFilter('Seattle','office')">Seattle</dd>
-      <dd id = "India" onclick="SideFilter('India','office')">India</dd>
-    </dl>
-    <dt>Job Titles</dt>
-      <dd id = "SPPH" onclick="SideFilter('SharePoint PracticeHead','title')">SharePoint Practice Head</dd>
-      <dd id = "DOT" onclick="SideFilter('.Net Development Lead','title')">.Net Development Lead</dd>
-      <dd id = "RE" onclick="SideFilter('Recruiting Expert','title')">Recruiting Expert</dd>
-      <dd id = "BID" onclick="SideFilter('BI Development','title')">BI Development</dd>
-      <dd id = "BD" onclick="SideFilter('Business Development','title')">Business Development</dd>
-      <a>Show more</a>
-    </dl>
-  </div>
-  <div class="main-filter">
-    <div class="alphabets">
-    <button onclick="window.location.reload();"><img src="./Image/person.png" height="15px" width="15px"></button>
-    <button onclick="alphabetFilter('A')">A</button>
-    <button onclick="alphabetFilter('B')">B</button>
-    <button onclick="alphabetFilter('C')">C</button>
-    <button onclick="alphabetFilter('D')">D</button>
-    <button onclick="alphabetFilter('E')">E</button>
-    <button onclick="alphabetFilter('F')">F</button>
-    <button onclick="alphabetFilter('G')">G</button>
-    <button onclick="alphabetFilter('H')">H</button>
-    <button onclick="alphabetFilter('I')">I</button>
-    <button onclick="alphabetFilter('J')">J</button>
-    <button onclick="alphabetFilter('K')">K</button>
-    <button onclick="alphabetFilter('L')">L</button>
-    <button onclick="alphabetFilter('M')">M</button>
-    <button onclick="alphabetFilter('N')">N</button>
-    <button onclick="alphabetFilter('O')">O</button>
-    <button onclick="alphabetFilter('P')">P</button>
-    <button onclick="alphabetFilter('Q')">Q</button>
-    <button onclick="alphabetFilter('R')">R</button>
-    <button onclick="alphabetFilter('S')">S</button>
-    <button onclick="alphabetFilter('T')">T</button>
-    <button onclick="alphabetFilter('U')">U</button>
-    <button onclick="alphabetFilter('V')">V</button>
-    <button onclick="alphabetFilter('W')">W</button>
-    <button onclick="alphabetFilter('X')">X</button>
-    <button onclick="alphabetFilter('Y')">Y</button>
-    <button onclick="alphabetFilter('Z')">Z</button>
-    </div>
-    <div class="search-filter">
-      <div class="seach-box">
-      <label style="font-size: medium;">Search:</label>
-      <input oninput = "myHandler();" onchange = "myHandler();" onkeypress = "myHandler();" id="SearchField" type="text" placeholder="Enter any keyword">
-      <button id ="clear" class="btn btn-success" onclick="window.location.reload();">Clear</button>
-    </div>
-      <div class="category-filter">
-      <label style="font-size: medium;">Filter By</label>
-      <select name="categories" id="categories">
-        <option value="first_name" selected>Name</option>
-        <option value="surname">Surname</option>
-        <option value="preferred_name">Preferred Name</option>
-        <option value="email">Email</option>
-        <option value="title" >Job Title</option>
-        <option value="office" >Office</option>
-        <option value="department" >Department</option>
-        <option value="number" >Phone Number</option>
-        <option value="skypeID">Skype Id</option>
-      </select>
-      </div>
-      <button class="btn btn-primary" id ="add-emp" data-toggle="modal" data-target="#employeeForm">Add Employee</button>
-    </div>
-
-
-    <div id="employeeForm" class="modal fade" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1>Add Employee</h1>
-          </div>
-          <div class="modal-body">
-
-            <form>
-              <div class="form-group">
-                <label for="first_name">Name</label>
-                <input type="text" class="form-control" id="first_name" placeholder="Enter your Name" required>
-            </div>
-            <div class="form-group">
-              <label for="surname">Surname</label>
-              <input type="text" class="form-control" id="surname" placeholder="Enter your Surname" required>
-          </div>
-          <div class="form-group">
-            <label for="preferred_name">Preferred Name</label>
-            <input type="text" class="form-control" id="preferred_name" placeholder="Enter your name">
-          </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="text" class="form-control" id="email" placeholder="Enter your Email" required>
-            </div>
-            <div class="form-group">
-              <label for="title">Job Title</label>
-              <select name="title" class="form-select form-select-lg mb-3" id="title">
-                <option value="SharePoint PracticeHead" selected>SharePoint Practice Head</option>
-                <option value=".Net Development Lead">.Net Development Lead</option>
-                <option value="Recruiting Expert">Recruiting Expert</option>
-                <option value="BI Development">BI Development</option>
-                <option value="Business Development">Business Development</option>
-              </select>
-          </div>
-          <div class="form-group">
-            <label for="office">Office</label>
-            <select name="office" class="form-select form-select-lg mb-3" id="office">
-              <option value="India" selected>India</option>
-              <option value="Seattle">Seattle</option>
-            </select>
-           </div>
-          <div class="form-group">
-            <label for="department">Department</label>
-            <select name="department" class="form-select form-select-lg mb-3" id="department">
-              <option value="IT" selected>IT</option>
-              <option value="Sales">Sales</option>
-              <option value="Human Resource">Human Resource</option>
-              <option value="MD">MD</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="number">Number</label>
-            <input type="text" class="form-control" id="number" placeholder="Enter your Number" required>
-          </div>
-          <div class="form-group">
-            <label for="skypeID">Skype ID</label>
-            <input type="text" class="form-control" id="skypeID" placeholder="Enter your Skype ID" required>
-          </div>
-          <div class="form-group">
-            <label for="inputFile" class="form-label">Upload Profile Picture</label>
-            <input type="file" class="formFile" accept="image/*">
-          </div>
-            
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" value="Submit" class="btn btn-success" onclick="AddEmployee()">Submit</button>
-          </form>
-          </div>
-        </div>
+      <div class="content">
+        <p id="Nav-Head">Employee Directory</p>
+        <p id="Nav-sub">The ultimate People Directory Experience</p>
       </div>
     </div>
-
-
-    <div id="employeeViewForm" class="modal fade" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1>View Details</h1>
-          </div>
-          <div class="modal-body">
-
-            <form>
-              <div class="form-group" id="DisplayPicture">
-              </div>
-              <div class="form-group" id="DisplayName">
-            </div>
-            <div class="form-group" id="DisplaySurname">
-          </div>
-          <div class="form-group" id="DisplayPreferredName">
-          </div>
-            <div class="form-group" id="DisplayEmail">
-            </div>
-            <div class="form-group" id="DisplayTitle">
-          </div>
-          <div class="form-group" id="DisplayOffice">
-           </div>
-          <div class="form-group" id="DisplayDepartment">
-          </div>
-          <div class="form-group" id="DisplayNumber">
-          </div>
-          <div class="form-group" id="DisplaySkype">
-          </div>       
-
-          </div>
-          <div class="modal-footer">
-            <button type="submit" onclick="deleteEmployee()" class="btn btn-danger" data-dismiss="modal">Delete</button>
-            <button type="button" id="editButton" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#employeeEditForm" onclick="EditEmployee()">Edit</button>
-          </form>
-          </div>
-        </div>
+    <div class="left-content">
+      <div class="username">
+        <p id="userName"><b id='welcome'>Welcome,</b> Andrew Philips</p>
       </div>
-    </div>
-
-
-    <div id="employeeEditForm" class="modal fade" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1>Add Details</h1>
-          </div>
-          <div class="modal-body">
-
-            <form>
-              <div class="form-group">
-                <label for="first_name">Name</label>
-                <input type="text" class="form-control" id="EditName" placeholder="Enter your Name" required>
-            </div>
-            <div class="form-group">
-              <label for="surname">Surname</label>
-              <input type="text" class="form-control" id="EditSurname" placeholder="Enter your Surname" required>
-          </div>
-          <div class="form-group">
-            <label for="preferred_name">Preferred Name</label>
-            <input type="text" class="form-control" id="EditPreferredName" placeholder="Enter your name">
-          </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="text" class="form-control" id="EditEmail" placeholder="Enter your Email" required>
-            </div>
-            <div class="form-group">
-              <label for="title">Job Title</label>
-              <select name="title" class="form-select form-select-lg mb-3" id="EditTitle">
-                <option value="Share Point Practice Head" selected>SharePoint Practice Head</option>
-                <option value=".Net Development Lead">.Net Development Lead</option>
-                <option value="Recruiting Expert">Recruiting Expert</option>
-                <option value="BI Development">BI Development</option>
-                <option value="Business Development">Business Development</option>
-              </select>
-          </div>
-          <div class="form-group">
-            <label for="office">Office</label>
-            <select name="office" class="form-select form-select-lg mb-3" id="EditOffice">
-              <option value="India" selected>India</option>
-              <option value="Seattle">Seattle</option>
-            </select>
-           </div>
-          <div class="form-group">
-            <label for="department">Department</label>
-            <select name="department" class="form-select form-select-lg mb-3" id="EditDepartment">
-              <option value="IT" selected>IT</option>
-              <option value="Sales">Sales</option>
-              <option value="Human Resource">Human Resource</option>
-              <option value="MD">MD</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="number">Number</label>
-            <input type="text" class="form-control" id="EditNumber" placeholder="Enter your Number" required>
-          </div>
-          <div class="form-group">
-            <label for="skypeID">Skype ID</label>
-            <input type="text" class="form-control" id="EditSkype" placeholder="Enter your Skype ID" required>
-          </div>
-          <div class="form-group">
-            <label for="inputFile" class="form-label">Upload Profile Picture</label>
-            <input type="file" id="formFileEdit" accept="image/*">
-          </div>
-            
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" value="Submit" class="btn btn-success" onclick="CommitChanges()">Submit</button>
-          </form>
-          </div>
-        </div>
+      <div>
+        <img id="profile-pic" src="Image\robin-Lade.jpg">
       </div>
-    </div>
-
-
-    <div class="note">
-      <b>Note:</b><p>Please use advanced filter option to refine your results</p>
-    </div>
-    <div id="card-display-box" style="width: 120rem;">
-
     </div>
   </div>
-</div> 
+
+
+
+  <div class="main-content">
+    <div class="side-filter">
+      <dl>
+        <dt>Departments</dt>
+        <dd id="IT" onclick="sideFilter('IT','department')">IT</dd>
+        <dd id="HR" onclick="sideFilter('Human Resource','department')">Human Resources</dd>
+        <dd id="MD" onclick="sideFilter('MD','department')">MD</dd>
+        <dd id="Sales" onclick="sideFilter('Sales','department')">Sales</dd>
+      </dl>
+      <dl>
+        <dt>Office</dt>
+        <dd id="Seattle" onclick="sideFilter('Seattle','office')">Seattle</dd>
+        <dd id="India" onclick="sideFilter('India','office')">India</dd>
+      </dl>
+      <dl>
+        <dt>Job Titles</dt>
+        <dd id="SPPH" onclick="sideFilter('SharePoint PracticeHead','title')">SharePoint Practice Head</dd>
+        <dd id="DOT" onclick="sideFilter('.Net Development Lead','title')">.Net Development Lead</dd>
+        <dd id="RE" onclick="sideFilter('Recruiting Expert','title')">Recruiting Expert</dd>
+        <dd id="BID" onclick="sideFilter('BI Development','title')">BI Development</dd>
+        <dd id="BD" onclick="sideFilter('Business Development','title')">Business Development</dd>
+        <a>Show more</a>
+      </dl>
+    </div>
+    <div class="main-filter">
+      <div class="alphabets">
+        <button onclick="window.location.reload();"><img src="./Image/person.png" height="15px" width="15px"></button>
+        <button onclick="alphabetFilter('A')">A</button>
+        <button onclick="alphabetFilter('B')">B</button>
+        <button onclick="alphabetFilter('C')">C</button>
+        <button onclick="alphabetFilter('D')">D</button>
+        <button onclick="alphabetFilter('E')">E</button>
+        <button onclick="alphabetFilter('F')">F</button>
+        <button onclick="alphabetFilter('G')">G</button>
+        <button onclick="alphabetFilter('H')">H</button>
+        <button onclick="alphabetFilter('I')">I</button>
+        <button onclick="alphabetFilter('J')">J</button>
+        <button onclick="alphabetFilter('K')">K</button>
+        <button onclick="alphabetFilter('L')">L</button>
+        <button onclick="alphabetFilter('M')">M</button>
+        <button onclick="alphabetFilter('N')">N</button>
+        <button onclick="alphabetFilter('O')">O</button>
+        <button onclick="alphabetFilter('P')">P</button>
+        <button onclick="alphabetFilter('Q')">Q</button>
+        <button onclick="alphabetFilter('R')">R</button>
+        <button onclick="alphabetFilter('S')">S</button>
+        <button onclick="alphabetFilter('T')">T</button>
+        <button onclick="alphabetFilter('U')">U</button>
+        <button onclick="alphabetFilter('V')">V</button>
+        <button onclick="alphabetFilter('W')">W</button>
+        <button onclick="alphabetFilter('X')">X</button>
+        <button onclick="alphabetFilter('Y')">Y</button>
+        <button onclick="alphabetFilter('Z')">Z</button>
+      </div>
+      <div class="search-filter">
+        <div class="seach-box">
+          <label style="font-size: medium;">Search:</label>
+          <input oninput="searchHandler();" onchange="searchHandler();" onkeypress="searchHandler();" id="SearchField"
+            type="text" placeholder="Enter any keyword">
+          <button id="clear" class="btn btn-success" onclick="window.location.reload();">Clear</button>
+        </div>
+        <div class="category-filter">
+          <label style="font-size: medium;">Filter By</label>
+          <select name="categories" id="categories">
+            <option value="first_name" selected>Name</option>
+            <option value="surname">Surname</option>
+            <option value="preferred_name">Preferred Name</option>
+            <option value="email">Email</option>
+            <option value="title">Job Title</option>
+            <option value="office">Office</option>
+            <option value="department">Department</option>
+            <option value="number">Phone Number</option>
+            <option value="skypeID">Skype Id</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" id="add-emp" data-toggle="modal" data-target="#employeeForm">Add
+          Employee</button>
+      </div>
+
+
+      <div id="employeeForm" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1>Add Employee</h1>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="first_name">Name</label>
+                  <input type="text" class="form-control" id="first_name" pattern="/^[a-zA-Z]{3,10}$/" placeholder="Enter your Name" required>
+                </div>
+                <div class="form-group">
+                  <label for="surname">Surname</label>
+                  <input type="text" class="form-control" id="surname" pattern="/^[a-zA-Z]{3,10}$/" placeholder="Enter your Surname" required>
+                </div>
+                <div class="form-group">
+                  <label for="preferred_name">Preferred Name</label>
+                  <input type="text" class="form-control" id="preferred_name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="text" class="form-control" id="email" pattern="/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/" placeholder="Enter your Email" required>
+                </div>
+                <div class="form-group">
+                  <label for="title">Job Title</label>
+                  <select name="title" class="form-select form-select-lg mb-3" id="title">
+                    <option value="SharePoint PracticeHead" selected>SharePoint Practice Head</option>
+                    <option value=".Net Development Lead">.Net Development Lead</option>
+                    <option value="Recruiting Expert">Recruiting Expert</option>
+                    <option value="BI Development">BI Development</option>
+                    <option value="Business Development">Business Development</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="office">Office</label>
+                  <select name="office" class="form-select form-select-lg mb-3" id="office">
+                    <option value="India" selected>India</option>
+                    <option value="Seattle">Seattle</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="department">Department</label>
+                  <select name="department" class="form-select form-select-lg mb-3" id="department">
+                    <option value="IT" selected>IT</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Human Resource">Human Resource</option>
+                    <option value="MD">MD</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="number">Number</label>
+                  <input type="text" class="form-control" id="number" pattern="/^\d{6,10}$/" placeholder="Enter your Number" required>
+                </div>
+                <div class="form-group">
+                  <label for="skypeID">Skype ID</label>
+                  <input type="text" class="form-control" id="skypeID" pattern="/^[^\s\W]+$/" placeholder="Enter your Skype ID" required>
+                </div>
+                <div class="form-group">
+                  <label for="inputFile" class="form-label">Upload Profile Picture</label>
+                  <input type="file" class="formFile" accept="image/*">
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" value="Submit" class="btn btn-success" onclick="addEmployee()">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="employeeViewForm" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style="display: flex;">
+              <h1>View Details</h1><button data-dismiss="modal"
+                style="height: max-content; width: max-content; position: relative; left: 340px;"><img
+                  src="Image/x-symbol.png"></button>
+            </div>
+            <div class="modal-body">
+
+              <form>
+                <div class="form-group" id="DisplayPicture">
+                </div>
+                <div class="form-group" id="DisplayName">
+                </div>
+                <div class="form-group" id="DisplaySurname">
+                </div>
+                <div class="form-group" id="DisplayPreferredName">
+                </div>
+                <div class="form-group" id="DisplayEmail">
+                </div>
+                <div class="form-group" id="DisplayTitle">
+                </div>
+                <div class="form-group" id="DisplayOffice">
+                </div>
+                <div class="form-group" id="DisplayDepartment">
+                </div>
+                <div class="form-group" id="DisplayNumber">
+                </div>
+                <div class="form-group" id="DisplaySkype">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" data-toggle="modal" data-target="#confirmation"
+                class="btn btn-danger">Delete</button>
+              <button type="button" id="editButton" class="btn btn-warning" data-dismiss="modal" data-toggle="modal"
+                data-target="#employeeEditForm" onclick="editEmployee()">Edit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="confirmation" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure you want to delete this employee?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+              <submit type="submit" value="submit" class="btn btn-danger" data-dismiss="modal"
+                onclick="deleteEmployee()">Yes</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="employeeEditForm" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1>Edit Details</h1>
+            </div>
+            <div class="modal-body">
+
+              <form>
+                <div class="form-group">
+                  <label for="first_name">Name</label>
+                  <input type="text" class="form-control" id="EditName" pattern="/^[a-zA-Z]{3,10}$/" placeholder="Enter your Name" required>
+                </div>
+                <div class="form-group">
+                  <label for="surname">Surname</label>
+                  <input type="text" class="form-control" id="EditSurname" pattern="/^[a-zA-Z]{3,10}$/" placeholder="Enter your Surname" required>
+                </div>
+                <div class="form-group">
+                  <label for="preferred_name">Preferred Name</label>
+                  <input type="text" class="form-control" id="EditPreferredName" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="text" class="form-control" id="EditEmail" pattern="/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/" placeholder="Enter your Email" required>
+                </div>
+                <div class="form-group">
+                  <label for="title">Job Title</label>
+                  <select name="title" class="form-select form-select-lg mb-3" id="EditTitle">
+                    <option value="Share Point Practice Head" selected>SharePoint Practice Head</option>
+                    <option value=".Net Development Lead">.Net Development Lead</option>
+                    <option value="Recruiting Expert">Recruiting Expert</option>
+                    <option value="BI Development">BI Development</option>
+                    <option value="Business Development">Business Development</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="office">Office</label>
+                  <select name="office" class="form-select form-select-lg mb-3" id="EditOffice">
+                    <option value="India" selected>India</option>
+                    <option value="Seattle">Seattle</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="department">Department</label>
+                  <select name="department" class="form-select form-select-lg mb-3" id="EditDepartment">
+                    <option value="IT" selected>IT</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Human Resource">Human Resource</option>
+                    <option value="MD">MD</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="number">Number</label>
+                  <input type="text" class="form-control" id="EditNumber" pattern="/^\d{6,10}$/" placeholder="Enter your Number" required>
+                </div>
+                <div class="form-group">
+                  <label for="skypeID">Skype ID</label>
+                  <input type="text" class="form-control" id="EditSkype" pattern="/^[^\s\W]+$/" placeholder="Enter your Skype ID" required>
+                </div>
+                <div class="form-group">
+                  <label for="inputFile" class="form-label">Upload Profile Picture</label>
+                  <input type="file" id="formFileEdit" accept="image/*">
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" value="Submit" class="btn btn-success" onclick="commitChanges()">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="note">
+        <b>Note:</b>
+        <p>Please use advanced filter option to refine your results</p>
+      </div>
+      <div id="card-display-box" style="width: 120rem;">
+
+      </div>
+    </div>
+  </div>
 
 
 
 
-<script src="function.js"></script>
+  <script src="function.js"></script>
 </body>
-</html>
 
+</html>
