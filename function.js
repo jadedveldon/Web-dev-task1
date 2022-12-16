@@ -2,6 +2,7 @@ var allEntries = []; //full data
 var displayBox = document.getElementById("card-display-box");
 var currentEntries = JSON.parse(localStorage.getItem("allEntries")) || [];
 var displayInfo;
+let imgCheck;
 var newCard;
 var countIT = 0;
 countHR = 0;
@@ -76,14 +77,14 @@ addEmpImg.addEventListener("change", function (e) {
   reader.readAsDataURL(file);
 });
 const editEmpImg = document.querySelector("#formFileEdit");
-base64String = " ";
-editEmpImg.addEventListener("change", function (e) {
-  const file = e.target.files[0];
+var base64StringEdit;
+editEmpImg.addEventListener("change", function (f) {
+  const file = f.target.files[0];
   const reader = new FileReader();
   reader.onloadend = function () {
-    base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
+    base64StringEdit = reader.result.replace("data:", "").replace(/^.+,/, "");
 
-    console.log(base64String);
+    console.log(base64StringEdit,"edit");
   };
   reader.readAsDataURL(file);
 });
@@ -126,9 +127,6 @@ document.getElementById("RE").innerHTML += "(" + countRE + ")";
 document.getElementById("BID").innerHTML += "(" + countBID + ")";
 document.getElementById("BD").innerHTML += "(" + countBD + ")";
 
-function capitalize(s) {
-  return s[0].toUpperCase() + s.slice(1);
-}
 
 //submit button on the modal form works this
 function addEmployee() {
@@ -144,8 +142,6 @@ function addEmployee() {
   var skypeID = getValueById("skypeID").trim();
 
   var user = {};
-  first_name = capitalize(first_name);
-  surname = capitalize(surname);
   user["first_name"] = first_name;
   user["surname"] = surname;
   if (preferred_name == "") {
@@ -202,7 +198,7 @@ function viewEmployee(id) {
     "DisplayPicture"
   ).innerHTML = `<img src="data:image/png;base64,${entry["ImgString"]}" height="100px" width="100px">`;
   CurrentID = id;
-  base64String = "check";
+  imgCheck = "check";
 }
 
 function editEmployee() {
@@ -247,9 +243,7 @@ function commitChanges() {
   var department = getValueById("EditDepartment");
   var number = getValueById("EditNumber");
   var skypeID = getValueById("EditSkype");
-  var temp = entry["ImgString"];
-  first_name = capitalize(first_name);
-  surname = capitalize(surname);
+  var currentImgString = entry["ImgString"];
   entry["first_name"] = first_name;
   entry["surname"] = surname;
   if (preferred_name == "") {
@@ -262,10 +256,10 @@ function commitChanges() {
   entry["department"] = department;
   entry["number"] = number;
   entry["skypeID"] = skypeID;
-  if (base64String == "check") {
-    entry["ImgString"] = temp;
+  if (imgCheck == "check") {
+    entry["ImgString"] = base64StringEdit;
   } else {
-    entry["ImgString"] = base64String;
+    entry["ImgString"] = currentImgString;
   }
 
   currentEntries[id] = entry;
@@ -290,7 +284,7 @@ function displayResults(FilterEntries) {
 function sideFilter(value, category) {
   displayBox.innerHTML = " ";
   let FilterEntries = [];
-  for (let i = 0; i < len; i++) {
+  for (let i = 0; i < currentEntries.length; i++) {
     displayInfo = currentEntries[i];
     if (displayInfo[category] == value) {
       FilterEntries.push(displayInfo);
@@ -318,16 +312,117 @@ function alphabetFilter(alphabet) {
 
 function searchHandler() {
   let KeyWord = getValueById("SearchField");
-  let category = "categories";
+  let category = getValueById("categories");
   displayBox.innerHTML = " ";
   let FilterEntries = [];
-  for (let i = 0; i < len; i++) {
-    displayInfo = currentEntries[i];
+  for (let i = 0; i < currentEntries.length; i++) {
+    let displayInfo = currentEntries[i];
     let checker = displayInfo[category];
     let l = KeyWord.length;
-    if (checker.slice(0, l) == KeyWord) {
+    console.log(checker,displayInfo)
+    if (checker.slice(0, l).toLowerCase() == KeyWord.toLowerCase()) {
       FilterEntries.push(displayInfo);
     }
   }
   displayResults(FilterEntries);
+}
+function validateName(type){
+  var regex = /^[a-zA-Z]{3,10}$/;
+  var formErrorDiv;
+  var tester;
+  if(type == "add"){
+    tester = getValueById("first_name");
+    formErrorDiv = document.getElementById("addName");
+  }
+  else{
+    tester = getValueById("EditName");
+    formErrorDiv = document.getElementById("editName");
+  }
+  if(regex.test(tester)){
+    formErrorDiv.style.display = "none";
+  }
+  else{
+    formErrorDiv.style.display = "block";
+  }
+console.log(tester,formErrorDiv,formErrorDiv.style.display);
+}
+function validateSurname(type){
+  var regex = /^[a-zA-Z]{3,10}$/;
+  var tester;
+  var formErrorDiv;
+  if(type == "add"){
+    tester = getValueById("surname");
+    formErrorDiv = document.getElementById("addSurname");
+  }
+  else{
+    tester = getValueById("EditSurname");
+    formErrorDiv = document.getElementById("editSurname");
+  }
+  if(regex.test(tester)){
+    formErrorDiv.style.display = "none";
+  }
+  else{
+    formErrorDiv.style.display = "block";
+  }
+  console.log(typeof tester);
+}
+function validateEmail(type){
+  var regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+  var tester;
+  var formErrorDiv;
+  if(type == "add"){
+    tester = getValueById("email");
+    formErrorDiv = document.getElementById("addEmail");
+  }
+  else{
+    tester = getValueById("EditEmail");
+    formErrorDiv = document.getElementById("editEmail");
+  }
+  if(regex.test(tester)){
+    formErrorDiv.style.display = "none";
+  }
+  else{
+    formErrorDiv.style.display = "block";
+  }
+  console.log(typeof tester);
+}
+function validateNumber(type){
+  var regex =  /^\d{6,10}$/;
+  var tester;
+  var formErrorDiv;
+  if(type == "add"){
+    tester = getValueById("number");
+    formErrorDiv = document.getElementById("addNumber");
+  }
+  else{
+    tester = getValueById("EditNumber");
+    formErrorDiv = document.getElementById("editNumber");
+  }
+  if(regex.test(tester)){
+    formErrorDiv.style.display = "none";
+  }
+  else{
+    formErrorDiv.style.display = "block";
+  }
+  console.log(typeof tester);
+}
+function validateSkype(type){
+  var regex =  /^[^\s\W]+$/;
+  var tester;
+  var formErrorDiv;
+  if(type == "add"){
+    tester = getValueById("skypeID");
+    formErrorDiv = document.getElementById("addSkype");
+  }
+  else{
+    tester = getValueById("EditSkype");
+    formErrorDiv = document.getElementById("editSkype");
+  }
+  if(regex.test(tester)){
+    formErrorDiv.style.display = "none";
+  }
+  else{
+    formErrorDiv.style.display = "block";
+  }
+  console.log(typeof tester);
 }

@@ -127,15 +127,23 @@
             <div class="modal-header">
               <h1>Add Employee</h1>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="overflow-y:scroll; height: 60vh;">
               <form>
                 <div class="form-group">
                   <label for="first_name">Name</label>
-                  <input type="text" class="form-control" id="first_name" pattern="/^[a-zA-Z]{3,10}$/" placeholder="Enter your Name" required>
+                  <input type="text" oninput='validateName("add");' class="form-control" id="first_name"
+                    placeholder="Enter your Name" required>
+                  <div id="addName" class="error-content">
+                    <p class="wrong-format">Format not valid; Enter name between 3 to 10 letters</p>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="surname">Surname</label>
-                  <input type="text" class="form-control" id="surname" pattern="/^[a-zA-Z]{3,10}$/" placeholder="Enter your Surname" required>
+                  <input type="text" oninput='validateSurname("add")' ; class="form-control" id="surname"
+                    placeholder="Enter your Surname" required>
+                  <div id="addSurname" class="error-content">
+                    <p class="wrong-format">Format not valid; Enter name between 3 to 10 letters</p>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="preferred_name">Preferred Name</label>
@@ -143,7 +151,11 @@
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="text" class="form-control" id="email" pattern="/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/" placeholder="Enter your Email" required>
+                  <input type="text" oninput="validateEmail('add');" class="form-control" id="email"
+                    placeholder="Enter your Email" required>
+                  <div id="addEmail" class="error-content">
+                    <p class="wrong-format">Format not valid; Enter email with text, @ and service domain</p>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="title">Job Title</label>
@@ -173,11 +185,19 @@
                 </div>
                 <div class="form-group">
                   <label for="number">Number</label>
-                  <input type="text" class="form-control" id="number" pattern="/^\d{6,10}$/" placeholder="Enter your Number" required>
+                  <input type="text" oninput="validateNumber('add');" class="form-control" id="number"
+                    placeholder="Enter your Number" required>
+                  <div id="addNumber" class="error-content">
+                    <p class="wrong-format">Format not valid; Enter number between 6 to 10 digits</p>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="skypeID">Skype ID</label>
-                  <input type="text" class="form-control" id="skypeID" pattern="/^[^\s\W]+$/" placeholder="Enter your Skype ID" required>
+                  <input type="text" oninput="validateSkype('add');" class="form-control" id="skypeID"
+                    placeholder="Enter your Skype ID" required>
+                  <div id="addSkype" class="error-content">
+                    <p class="wrong-format">Format not valid; Enter ID without spaces and Special Characters</p>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="inputFile" class="form-label">Upload Profile Picture</label>
@@ -203,7 +223,7 @@
                 style="height: max-content; width: max-content; position: relative; left: 340px;"><img
                   src="Image/x-symbol.png"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="overflow-y:scroll; height: 60vh;">
 
               <form>
                 <div class="form-group" id="DisplayPicture">
@@ -265,16 +285,23 @@
             <div class="modal-header">
               <h1>Edit Details</h1>
             </div>
-            <div class="modal-body">
-
+            <div class="modal-body" style="overflow-y:scroll; height: 60vh;">
               <form>
                 <div class="form-group">
                   <label for="first_name">Name</label>
-                  <input type="text" class="form-control" id="EditName" pattern="/^[a-zA-Z]{3,10}$/" placeholder="Enter your Name" required>
+                  <input type="text" oninput="validateName('edit');" class="form-control" id="EditName"
+                    placeholder="Enter your Name" required>
+                  <div id="editName" class="error-content">
+                    <p class="wrong-format">Format not valid; Enter name between 3 to 10 letters</p>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="surname">Surname</label>
-                  <input type="text" class="form-control" id="EditSurname" pattern="/^[a-zA-Z]{3,10}$/" placeholder="Enter your Surname" required>
+                  <input type="text" oninput="validateSurname('edit');" class="form-control" id="EditSurname"
+                    placeholder="Enter your Surname" required>
+                  <div id="editSurname" class="error-content">
+                    <p class="wrong-format">Format not valid; Enter name between 3 to 10 letters</p>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="preferred_name">Preferred Name</label>
@@ -282,7 +309,11 @@
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="text" class="form-control" id="EditEmail" pattern="/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/" placeholder="Enter your Email" required>
+                  <input type="text" oninput="validateEmail('edit');" class="form-control" id="EditEmail"
+                    placeholder="Enter your Email" required>
+                  <div id="editEmail" class="error-content">
+                    <p class="wrong-format">Format not valid; Enter email with text, @ and service domain</p>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="title">Job Title</label>
@@ -312,11 +343,19 @@
                 </div>
                 <div class="form-group">
                   <label for="number">Number</label>
-                  <input type="text" class="form-control" id="EditNumber" pattern="/^\d{6,10}$/" placeholder="Enter your Number" required>
+                  <input type="text" oninput='validateNumber("edit");' class="form-control" id="EditNumber"
+                    placeholder="Enter your Number" required>
+                  <div id="editNumber" class="error-content">
+                    <p class="wrong-format">Format not valid; Enter number between 6 to 10 digits</p>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="skypeID">Skype ID</label>
-                  <input type="text" class="form-control" id="EditSkype" pattern="/^[^\s\W]+$/" placeholder="Enter your Skype ID" required>
+                  <input type="text" oninput='validateSkype("edit");' class="form-control" id="EditSkype"
+                    placeholder="Enter your Skype ID" required>
+                  <div id="editSkype" class="error-content">
+                    <p class="wrong-format">Format not valid; Enter ID without spaces and Special Characters</p>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="inputFile" class="form-label">Upload Profile Picture</label>

@@ -144,4 +144,10 @@ dd{
     margin-left: 50px;
     margin-right: 50px;
 }
-
+.wrong-format{
+    color: red;
+    font-size: small;
+}
+.error-content{
+    display: none;
+}
