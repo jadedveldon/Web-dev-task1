@@ -151,3 +151,11 @@ dd{
 .error-content{
     display: none;
 }
+
+.side-filter-item {
+    color: black;
+}
+
+.side-filter-item--active {
+    color: blue;
+}

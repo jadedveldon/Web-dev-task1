@@ -1,10 +1,13 @@
-var allEntries = []; //full data
-var displayBox = document.getElementById("card-display-box");
-var currentEntries = JSON.parse(localStorage.getItem("allEntries")) || [];
-var displayInfo;
+// global filter state
+
+
+let allEntries = []; //full data
+let displayBox = document.getElementById("card-display-box");
+let currentEntries = JSON.parse(localStorage.getItem("allEntries")) || [];
+let displayInfo;
 let imgCheck;
-var newCard;
-var countIT = 0;
+let newCard;
+let countIT = 0;
 countHR = 0;
 countMD = 0;
 countSales = 0;
@@ -65,7 +68,7 @@ for (let i = 0; i < currentEntries.length; i++) {
 
 //getting base64 string
 const addEmpImg = document.querySelector(".formFile");
-var base64String;
+let base64String;
 addEmpImg.addEventListener("change", function (e) {
   const file = e.target.files[0];
   const reader = new FileReader();
@@ -77,21 +80,21 @@ addEmpImg.addEventListener("change", function (e) {
   reader.readAsDataURL(file);
 });
 const editEmpImg = document.querySelector("#formFileEdit");
-var base64StringEdit;
+let base64StringEdit;
 editEmpImg.addEventListener("change", function (f) {
   const file = f.target.files[0];
   const reader = new FileReader();
   reader.onloadend = function () {
     base64StringEdit = reader.result.replace("data:", "").replace(/^.+,/, "");
 
-    console.log(base64StringEdit,"edit");
+    console.log(base64StringEdit, "edit");
   };
   reader.readAsDataURL(file);
 });
 
 //card html generated here
 function cardGenerator(p_name, designation, dept, baseImg, id) {
-  var cardTemplate = `<div class="card" onclick="viewEmployee(id)" data-toggle="modal" name="cardview" data-target="#employeeViewForm" style="width: 27rem;" id = ${id}>
+  let cardTemplate = `<div class="card" onclick="viewEmployee(id)" data-toggle="modal" name="cardview" data-target="#employeeViewForm" style="width: 27rem;" id = ${id}>
     <div class="card-body">
     <div class="card-img">
         <img class="card-dp" src="data:image/png;base64,${baseImg}" height="70px" width="70px">
@@ -127,21 +130,20 @@ document.getElementById("RE").innerHTML += "(" + countRE + ")";
 document.getElementById("BID").innerHTML += "(" + countBID + ")";
 document.getElementById("BD").innerHTML += "(" + countBD + ")";
 
-
 //submit button on the modal form works this
 function addEmployee() {
-  var existingEntries = JSON.parse(localStorage.getItem("allEntries")) || [];
-  var first_name = getValueById("first_name").trim();
-  var surname = getValueById("surname").trim();
-  var preferred_name = getValueById("preferred_name").trim();
-  var email = getValueById("email").trim();
-  var title = getValueById("title").trim();
-  var office = getValueById("office").trim();
-  var department = getValueById("department").trim();
-  var number = getValueById("number").trim();
-  var skypeID = getValueById("skypeID").trim();
+  let existingEntries = JSON.parse(localStorage.getItem("allEntries")) || [];
+  let first_name = getValueById("first_name").trim();
+  let surname = getValueById("surname").trim();
+  let preferred_name = getValueById("preferred_name").trim();
+  let email = getValueById("email").trim();
+  let title = getValueById("title").trim();
+  let office = getValueById("office").trim();
+  let department = getValueById("department").trim();
+  let number = getValueById("number").trim();
+  let skypeID = getValueById("skypeID").trim();
 
-  var user = {};
+  let user = {};
   user["first_name"] = first_name;
   user["surname"] = surname;
   if (preferred_name == "") {
@@ -234,16 +236,16 @@ function commitChanges() {
   let id = CurrentID;
   let entry = currentEntries[id];
   localStorage.setItem("allEntries", JSON.stringify(currentEntries));
-  var first_name = getValueById("EditName");
-  var surname = getValueById("EditSurname");
-  var preferred_name = getValueById("EditPreferredName");
-  var email = getValueById("EditEmail");
-  var title = getValueById("EditTitle");
-  var office = getValueById("EditOffice");
-  var department = getValueById("EditDepartment");
-  var number = getValueById("EditNumber");
-  var skypeID = getValueById("EditSkype");
-  var currentImgString = entry["ImgString"];
+  let first_name = getValueById("EditName");
+  let surname = getValueById("EditSurname");
+  let preferred_name = getValueById("EditPreferredName");
+  let email = getValueById("EditEmail");
+  let title = getValueById("EditTitle");
+  let office = getValueById("EditOffice");
+  let department = getValueById("EditDepartment");
+  let number = getValueById("EditNumber");
+  let skypeID = getValueById("EditSkype");
+  let currentImgString = entry["ImgString"];
   entry["first_name"] = first_name;
   entry["surname"] = surname;
   if (preferred_name == "") {
@@ -281,7 +283,15 @@ function displayResults(FilterEntries) {
   }
 }
 
-function sideFilter(value, category) {
+function sideFilter(id, value, category) {
+  const filterItems = document.getElementsByClassName("side-filter-item");
+  const filterSelected = document.querySelector(`#${id}`);
+  Object.keys(filterItems).forEach((key) => {
+    filterItems[key].classList.remove("side-filter-item--active");
+  });
+  filterSelected.classList.add("side-filter-item--active");
+  // remove side-filter-item--active for side-filter-item
+  // add active class now to the one you want to highlight
   displayBox.innerHTML = " ";
   let FilterEntries = [];
   for (let i = 0; i < currentEntries.length; i++) {
@@ -319,109 +329,99 @@ function searchHandler() {
     let displayInfo = currentEntries[i];
     let checker = displayInfo[category];
     let l = KeyWord.length;
-    console.log(checker,displayInfo)
+    console.log(checker, displayInfo);
     if (checker.slice(0, l).toLowerCase() == KeyWord.toLowerCase()) {
       FilterEntries.push(displayInfo);
     }
   }
   displayResults(FilterEntries);
 }
-function validateName(type){
-  var regex = /^[a-zA-Z]{3,10}$/;
-  var formErrorDiv;
-  var tester;
-  if(type == "add"){
+function validateName(type) {
+  let regex = /^[a-zA-Z]{3,10}$/;
+  let formErrorDiv;
+  let tester;
+  if (type == "add") {
     tester = getValueById("first_name");
     formErrorDiv = document.getElementById("addName");
-  }
-  else{
+  } else {
     tester = getValueById("EditName");
     formErrorDiv = document.getElementById("editName");
   }
-  if(regex.test(tester)){
+  if (regex.test(tester)) {
     formErrorDiv.style.display = "none";
-  }
-  else{
+  } else {
     formErrorDiv.style.display = "block";
   }
-console.log(tester,formErrorDiv,formErrorDiv.style.display);
+  console.log(tester, formErrorDiv, formErrorDiv.style.display);
 }
-function validateSurname(type){
-  var regex = /^[a-zA-Z]{3,10}$/;
-  var tester;
-  var formErrorDiv;
-  if(type == "add"){
+function validateSurname(type) {
+  let regex = /^[a-zA-Z]{3,10}$/;
+  let tester;
+  let formErrorDiv;
+  if (type == "add") {
     tester = getValueById("surname");
     formErrorDiv = document.getElementById("addSurname");
-  }
-  else{
+  } else {
     tester = getValueById("EditSurname");
     formErrorDiv = document.getElementById("editSurname");
   }
-  if(regex.test(tester)){
+  if (regex.test(tester)) {
     formErrorDiv.style.display = "none";
-  }
-  else{
+  } else {
     formErrorDiv.style.display = "block";
   }
   console.log(typeof tester);
 }
-function validateEmail(type){
-  var regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-  var tester;
-  var formErrorDiv;
-  if(type == "add"){
+function validateEmail(type) {
+  let regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+  let tester;
+  let formErrorDiv;
+  if (type == "add") {
     tester = getValueById("email");
     formErrorDiv = document.getElementById("addEmail");
-  }
-  else{
+  } else {
     tester = getValueById("EditEmail");
     formErrorDiv = document.getElementById("editEmail");
   }
-  if(regex.test(tester)){
+  if (regex.test(tester)) {
     formErrorDiv.style.display = "none";
-  }
-  else{
+  } else {
     formErrorDiv.style.display = "block";
   }
   console.log(typeof tester);
 }
-function validateNumber(type){
-  var regex =  /^\d{6,10}$/;
-  var tester;
-  var formErrorDiv;
-  if(type == "add"){
+function validateNumber(type) {
+  let regex = /^\d{6,10}$/;
+  let tester;
+  let formErrorDiv;
+  if (type == "add") {
     tester = getValueById("number");
     formErrorDiv = document.getElementById("addNumber");
-  }
-  else{
+  } else {
     tester = getValueById("EditNumber");
     formErrorDiv = document.getElementById("editNumber");
   }
-  if(regex.test(tester)){
+  if (regex.test(tester)) {
     formErrorDiv.style.display = "none";
-  }
-  else{
+  } else {
     formErrorDiv.style.display = "block";
   }
   console.log(typeof tester);
 }
-function validateSkype(type){
-  var regex =  /^[^\s\W]+$/;
-  var tester;
-  var formErrorDiv;
-  if(type == "add"){
+function validateSkype(type) {
+  let regex = /^[^\s\W]+$/;
+  let tester;
+  let formErrorDiv;
+  if (type == "add") {
     tester = getValueById("skypeID");
     formErrorDiv = document.getElementById("addSkype");
-  }
-  else{
+  } else {
     tester = getValueById("EditSkype");
     formErrorDiv = document.getElementById("editSkype");
   }
-  if(regex.test(tester)){
+  if (regex.test(tester)) {
     formErrorDiv.style.display = "none";
-  }
-  else{
+  } else {
     formErrorDiv.style.display = "block";
   }
   console.log(typeof tester);
