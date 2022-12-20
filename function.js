@@ -24,7 +24,7 @@ for (let i = 0; i < currentEntries.length; i++) {
   let designation = displayInfo["title"];
   let dept = displayInfo["department"];
   let baseImg = displayInfo["ImgString"];
-  let id = i;
+  let empId = displayInfo["empId"];;
   let office = displayInfo["office"];
 
   if (dept == "IT") {
@@ -61,7 +61,7 @@ for (let i = 0; i < currentEntries.length; i++) {
     countBD += 1;
   }
 
-  newCard = cardGenerator(p_name, designation, dept, baseImg, id);
+  newCard = cardGenerator(p_name, designation, dept, baseImg, empId);
 
   displayBox.innerHTML += newCard;
 }
@@ -93,8 +93,8 @@ editEmpImg.addEventListener("change", function (f) {
 });
 
 //card html generated here
-function cardGenerator(p_name, designation, dept, baseImg, id) {
-  let cardTemplate = `<div class="card" onclick="viewEmployee(id)" data-toggle="modal" name="cardview" data-target="#employeeViewForm" style="width: 27rem;" id = ${id}>
+function cardGenerator(p_name, designation, dept, baseImg, empId) {
+  let cardTemplate = `<div class="card" onclick="viewEmployee(id)" data-toggle="modal" name="cardview" data-target="#employeeViewForm" style="width: 27rem;" id = ${empId}>
     <div class="card-body">
     <div class="card-img">
         <img class="card-dp" src="data:image/png;base64,${baseImg}" height="70px" width="70px">
@@ -133,6 +133,7 @@ document.getElementById("BD").innerHTML += "(" + countBD + ")";
 //submit button on the modal form works this
 function addEmployee() {
   let existingEntries = JSON.parse(localStorage.getItem("allEntries")) || [];
+  let entry = JSON.parse(localStorage.getItem("entry")) || [];
   let first_name = getValueById("first_name").trim();
   let surname = getValueById("surname").trim();
   let preferred_name = getValueById("preferred_name").trim();
@@ -142,8 +143,9 @@ function addEmployee() {
   let department = getValueById("department").trim();
   let number = getValueById("number").trim();
   let skypeID = getValueById("skypeID").trim();
-
+  let empId = (typeof entry["empId"] === 'undefined') ? 0:entry["empId"]+1;
   let user = {};
+  user["empId"] = empId;
   user["first_name"] = first_name;
   user["surname"] = surname;
   if (preferred_name == "") {
@@ -199,7 +201,7 @@ function viewEmployee(id) {
   document.getElementById(
     "DisplayPicture"
   ).innerHTML = `<img src="data:image/png;base64,${entry["ImgString"]}" height="100px" width="100px">`;
-  CurrentID = id;
+  CurrentID = entry["empId"];
   imgCheck = "check";
 }
 
@@ -268,19 +270,16 @@ function commitChanges() {
   localStorage.setItem("allEntries", JSON.stringify(currentEntries));
 }
 
-function displayResults(FilterEntries) {
-  for (let i = 0; i < FilterEntries.length; i++) {
-    displayInfo = FilterEntries[i];
-    let p_name = displayInfo["preferred_name"];
-    let designation = displayInfo["title"];
-    let dept = displayInfo["department"];
-    let baseImg = displayInfo["ImgString"];
-    let id = i;
+function displayResults(displayInfo) {
+  let p_name = displayInfo["preferred_name"];
+  let designation = displayInfo["title"];
+  let dept = displayInfo["department"];
+  let baseImg = displayInfo["ImgString"];
+  let id = displayInfo["empId"];
 
-    newCard = cardGenerator(p_name, designation, dept, baseImg, id);
+  newCard = cardGenerator(p_name, designation, dept, baseImg, id);
 
-    displayBox.innerHTML += newCard;
-  }
+  displayBox.innerHTML += newCard;
 }
 
 function sideFilter(id, value, category) {
@@ -300,7 +299,7 @@ function sideFilter(id, value, category) {
       FilterEntries.push(displayInfo);
     }
   }
-  displayResults(FilterEntries);
+  FilterEntries.forEach(displayResults);
 }
 
 function alphabetFilter(alphabet) {
@@ -317,7 +316,7 @@ function alphabetFilter(alphabet) {
       FilterEntries.push(entry);
     }
   }
-  displayResults(FilterEntries);
+  FilterEntries.forEach(displayResults);
 }
 
 function searchHandler() {
@@ -334,7 +333,7 @@ function searchHandler() {
       FilterEntries.push(displayInfo);
     }
   }
-  displayResults(FilterEntries);
+  FilterEntries.forEach(displayResults);
 }
 function validateName(type) {
   let regex = /^[a-zA-Z]{3,10}$/;
@@ -352,7 +351,6 @@ function validateName(type) {
   } else {
     formErrorDiv.style.display = "block";
   }
-  console.log(tester, formErrorDiv, formErrorDiv.style.display);
 }
 function validateSurname(type) {
   let regex = /^[a-zA-Z]{3,10}$/;
@@ -370,7 +368,6 @@ function validateSurname(type) {
   } else {
     formErrorDiv.style.display = "block";
   }
-  console.log(typeof tester);
 }
 function validateEmail(type) {
   let regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
@@ -388,7 +385,6 @@ function validateEmail(type) {
   } else {
     formErrorDiv.style.display = "block";
   }
-  console.log(typeof tester);
 }
 function validateNumber(type) {
   let regex = /^\d{6,10}$/;
@@ -406,7 +402,6 @@ function validateNumber(type) {
   } else {
     formErrorDiv.style.display = "block";
   }
-  console.log(typeof tester);
 }
 function validateSkype(type) {
   let regex = /^[^\s\W]+$/;
@@ -424,5 +419,4 @@ function validateSkype(type) {
   } else {
     formErrorDiv.style.display = "block";
   }
-  console.log(typeof tester);
 }
