@@ -1,6 +1,11 @@
 // global filter state
-
-
+let globalId = null;
+let globalValue = null;
+let globalCategory = null;
+let globalAlphabet = null;
+let globalSearch = null;
+let globalDropdown = null;
+let FilterEntries = [];
 let allEntries = []; //full data
 let displayBox = document.getElementById("card-display-box");
 let currentEntries = JSON.parse(localStorage.getItem("allEntries")) || [];
@@ -189,9 +194,7 @@ function viewEmployee(id) {
   ).innerHTML = `<label for="office">Office:&nbsp;</label><p>${entry["office"]}</p>`;
   document.getElementById(
     "DisplayDepartment"
-  ).innerHTML = `<label for="department">Department:&nbsp;</label><p>${[
-    "department",
-  ]}</p>`;
+  ).innerHTML = `<label for="department">Department:&nbsp;</label><p>${entry["department"]}</p>`;
   document.getElementById(
     "DisplayNumber"
   ).innerHTML = `<label for="number">Number:&nbsp;</label><p>${entry["number"]}</p>`;
@@ -270,7 +273,7 @@ function commitChanges() {
   localStorage.setItem("allEntries", JSON.stringify(currentEntries));
 }
 
-function displayResults(displayInfo) {
+function displayResult(displayInfo) {
   let p_name = displayInfo["preferred_name"];
   let designation = displayInfo["title"];
   let dept = displayInfo["department"];
@@ -282,58 +285,59 @@ function displayResults(displayInfo) {
   displayBox.innerHTML += newCard;
 }
 
-function sideFilter(id, value, category) {
-  const filterItems = document.getElementsByClassName("side-filter-item");
-  const filterSelected = document.querySelector(`#${id}`);
-  Object.keys(filterItems).forEach((key) => {
+
+
+
+
+function filter(alphabet,id,value,category){
+  displayBox.innerHTML = " ";
+  let FilterEntries = [];
+  globalDropdown = getValueById("categories");
+  if(id!=null && value!=null && category!=null){
+    globalId = id;
+    globalValue = value;
+    globalCategory = category;
+    const filterItems = document.getElementsByClassName("side-filter-item");
+    const filterSelected = document.querySelector(`#${id}`);
+    Object.keys(filterItems).forEach((key) => {
     filterItems[key].classList.remove("side-filter-item--active");
-  });
-  filterSelected.classList.add("side-filter-item--active");
-  // remove side-filter-item--active for side-filter-item
-  // add active class now to the one you want to highlight
-  displayBox.innerHTML = " ";
-  let FilterEntries = [];
-  for (let i = 0; i < currentEntries.length; i++) {
-    displayInfo = currentEntries[i];
-    if (displayInfo[category] == value) {
-      FilterEntries.push(displayInfo);
-    }
+    });
+    filterSelected.classList.add("side-filter-item--active");
   }
-  FilterEntries.forEach(displayResults);
-}
+  if(alphabet != null){
+    globalAlphabet = alphabet;
+  }
+  if(alphabet == null && id == null){
+    globalSearch = getValueById("SearchField");
+  }
+  FilterEntries = currentEntries.filter((entry) => {
+    let sideFilterConditionOn = globalId != null;
+    let topFilterConditionOn = globalAlphabet != null;
+    let searchFilterConditionOn = globalSearch != null;
+    if (sideFilterConditionOn){
+      if(entry[globalCategory] != globalValue){
+        return false
+      }
+    }
+    if(topFilterConditionOn){
+      let localValue = entry[globalDropdown];
+      localValue = localValue.toLowerCase();
+      if(localValue[0] != globalAlphabet.toLowerCase()){
+        return false
+      }
+    }
+    if(searchFilterConditionOn){
 
-function alphabetFilter(alphabet) {
-  displayBox.innerHTML = " ";
-  let category = getValueById("categories");
-  let len = currentEntries.length;
-  alphabet = alphabet.toLowerCase();
-  let FilterEntries = [];
-  for (let i = 0; i < len; i++) {
-    let entry = currentEntries[i];
-    let temp = entry[category];
-    temp = temp.toLowerCase();
-    if (temp[0] == alphabet) {
-      FilterEntries.push(entry);
+      let checker = entry[globalDropdown];
+      let len = globalSearch.length;
+      if(checker.slice(0, len).toLowerCase() != globalSearch.toLowerCase()){
+        return false
+      }
     }
-  }
-  FilterEntries.forEach(displayResults);
-}
-
-function searchHandler() {
-  let KeyWord = getValueById("SearchField");
-  let category = getValueById("categories");
-  displayBox.innerHTML = " ";
-  let FilterEntries = [];
-  for (let i = 0; i < currentEntries.length; i++) {
-    let displayInfo = currentEntries[i];
-    let checker = displayInfo[category];
-    let l = KeyWord.length;
-    console.log(checker, displayInfo);
-    if (checker.slice(0, l).toLowerCase() == KeyWord.toLowerCase()) {
-      FilterEntries.push(displayInfo);
-    }
-  }
-  FilterEntries.forEach(displayResults);
+    return true
+    
+  })
+  FilterEntries.forEach(displayResult);
 }
 function validateName(type) {
   let regex = /^[a-zA-Z]{3,10}$/;

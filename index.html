@@ -45,60 +45,60 @@
     <div class="side-filter">
       <dl>
         <dt>Departments</dt>
-        <dd class="side-filter-item" id="IT" onclick="sideFilter(id,'IT','department')">IT</dd>
-        <dd class="side-filter-item" id="HR" onclick="sideFilter(id,'Human Resource','department')">Human Resources</dd>
-        <dd class="side-filter-item" id="MD" onclick="sideFilter(id,'MD','department')">MD</dd>
-        <dd class="side-filter-item" id="Sales" onclick="sideFilter(id,'Sales','department')">Sales</dd>
+        <dd class="side-filter-item" id="IT" onclick="filter(null,id,'IT','department')">IT</dd>
+        <dd class="side-filter-item" id="HR" onclick="filter(null,id,'Human Resource','department')">Human Resources</dd>
+        <dd class="side-filter-item" id="MD" onclick="filter(null,id,'MD','department')">MD</dd>
+        <dd class="side-filter-item" id="Sales" onclick="filter(null,id,'Sales','department')">Sales</dd>
       </dl>
       <dl>
         <dt>Office</dt>
-        <dd class="side-filter-item" id="Seattle" onclick="sideFilter(id,'Seattle','office')">Seattle</dd>
-        <dd class="side-filter-item" id="India" onclick="sideFilter(id,'India','office')">India</dd>
+        <dd class="side-filter-item" id="Seattle" onclick="filter(null,id,'Seattle','office')">Seattle</dd>
+        <dd class="side-filter-item" id="India" onclick="filter(null,id,'India','office')">India</dd>
       </dl>
       <dl>
         <dt>Job Titles</dt>
-        <dd class="side-filter-item" id="SPPH" onclick="sideFilter(id,'SharePoint PracticeHead','title')">SharePoint Practice Head</dd>
-        <dd class="side-filter-item" id="DOT" onclick="sideFilter(id,'.Net Development Lead','title')">.Net Development Lead</dd>
-        <dd class="side-filter-item" id="RE" onclick="sideFilter(id,'Recruiting Expert','title')">Recruiting Expert</dd>
-        <dd class="side-filter-item" id="BID" onclick="sideFilter(id,'BI Development','title')">BI Development</dd>
-        <dd class="side-filter-item" id="BD" onclick="sideFilter(id,'Business Development','title')">Business Development</dd>
+        <dd class="side-filter-item" id="SPPH" onclick="filter(null,id,'SharePoint PracticeHead','title')">SharePoint Practice Head</dd>
+        <dd class="side-filter-item" id="DOT" onclick="filter(null,id,'.Net Development Lead','title')">.Net Development Lead</dd>
+        <dd class="side-filter-item" id="RE" onclick="filter(null,id,'Recruiting Expert','title')">Recruiting Expert</dd>
+        <dd class="side-filter-item" id="BID" onclick="filter(null,id,'BI Development','title')">BI Development</dd>
+        <dd class="side-filter-item" id="BD" onclick="filter(null,id,'Business Development','title')">Business Development</dd>
         <a>Show more</a>
       </dl>
     </div>
     <div class="main-filter">
       <div class="alphabets">
         <button onclick="window.location.reload();"><img src="./Image/person.png" height="15px" width="15px"></button>
-        <button onclick="alphabetFilter('A')">A</button>
-        <button onclick="alphabetFilter('B')">B</button>
-        <button onclick="alphabetFilter('C')">C</button>
-        <button onclick="alphabetFilter('D')">D</button>
-        <button onclick="alphabetFilter('E')">E</button>
-        <button onclick="alphabetFilter('F')">F</button>
-        <button onclick="alphabetFilter('G')">G</button>
-        <button onclick="alphabetFilter('H')">H</button>
-        <button onclick="alphabetFilter('I')">I</button>
-        <button onclick="alphabetFilter('J')">J</button>
-        <button onclick="alphabetFilter('K')">K</button>
-        <button onclick="alphabetFilter('L')">L</button>
-        <button onclick="alphabetFilter('M')">M</button>
-        <button onclick="alphabetFilter('N')">N</button>
-        <button onclick="alphabetFilter('O')">O</button>
-        <button onclick="alphabetFilter('P')">P</button>
-        <button onclick="alphabetFilter('Q')">Q</button>
-        <button onclick="alphabetFilter('R')">R</button>
-        <button onclick="alphabetFilter('S')">S</button>
-        <button onclick="alphabetFilter('T')">T</button>
-        <button onclick="alphabetFilter('U')">U</button>
-        <button onclick="alphabetFilter('V')">V</button>
-        <button onclick="alphabetFilter('W')">W</button>
-        <button onclick="alphabetFilter('X')">X</button>
-        <button onclick="alphabetFilter('Y')">Y</button>
-        <button onclick="alphabetFilter('Z')">Z</button>
+        <button onclick="filter('A')">A</button>
+        <button onclick="filter('B')">B</button>
+        <button onclick="filter('C')">C</button>
+        <button onclick="filter('D')">D</button>
+        <button onclick="filter('E')">E</button>
+        <button onclick="filter('F')">F</button>
+        <button onclick="filter('G')">G</button>
+        <button onclick="filter('H')">H</button>
+        <button onclick="filter('I')">I</button>
+        <button onclick="filter('J')">J</button>
+        <button onclick="filter('K')">K</button>
+        <button onclick="filter('L')">L</button>
+        <button onclick="filter('M')">M</button>
+        <button onclick="filter('N')">N</button>
+        <button onclick="filter('O')">O</button>
+        <button onclick="filter('P')">P</button>
+        <button onclick="filter('Q')">Q</button>
+        <button onclick="filter('R')">R</button>
+        <button onclick="filter('S')">S</button>
+        <button onclick="filter('T')">T</button>
+        <button onclick="filter('U')">U</button>
+        <button onclick="filter('V')">V</button>
+        <button onclick="filter('W')">W</button>
+        <button onclick="filter('X')">X</button>
+        <button onclick="filter('Y')">Y</button>
+        <button onclick="filter('Z')">Z</button>
       </div>
       <div class="search-filter">
         <div class="seach-box">
           <label style="font-size: medium;">Search:</label>
-          <input oninput="searchHandler();" onchange="searchHandler();" onkeypress="searchHandler();" id="SearchField"
+          <input oninput="filter();" onchange="filter();" onkeypress="filter();" id="SearchField"
             type="text" placeholder="Enter any keyword">
           <button id="clear" class="btn btn-success" onclick="window.location.reload();">Clear</button>
         </div>
@@ -318,7 +318,7 @@
                 <div class="form-group">
                   <label for="title">Job Title</label>
                   <select name="title" class="form-select form-select-lg mb-3" id="EditTitle">
-                    <option value="Share Point Practice Head" selected>SharePoint Practice Head</option>
+                    <option value="SharePoint PracticeHead" selected>SharePoint Practice Head</option>
                     <option value=".Net Development Lead">.Net Development Lead</option>
                     <option value="Recruiting Expert">Recruiting Expert</option>
                     <option value="BI Development">BI Development</option>
@@ -378,7 +378,7 @@
         <b>Note:</b>
         <p>Please use advanced filter option to refine your results</p>
       </div>
-      <div id="card-display-box" style="width: 120rem;">
+      <div id="card-display-box" style="width: 120rem; overflow-y:scroll; height: 55vh;">
 
       </div>
     </div>
