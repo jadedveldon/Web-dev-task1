@@ -29,7 +29,7 @@ for (let i = 0; i < currentEntries.length; i++) {
   let designation = displayInfo["title"];
   let dept = displayInfo["department"];
   let baseImg = displayInfo["ImgString"];
-  let empId = displayInfo["empId"];;
+  let empId = displayInfo["empId"];
   let office = displayInfo["office"];
 
   if (dept == "IT") {
@@ -172,7 +172,7 @@ function addEmployee() {
 
 let CurrentID;
 function viewEmployee(id) {
-  let entry = currentEntries[id];
+  let entry = currentEntries.find(entry => entry["empId"] == id);
   console.log(id);
   document.getElementById(
     "DisplayName"
@@ -211,7 +211,7 @@ function viewEmployee(id) {
 function editEmployee() {
   let currentEntries = JSON.parse(localStorage.getItem("allEntries"));
   let id = CurrentID;
-  let entry = currentEntries[id];
+  let entry = currentEntries.find(entry => entry["empId"] == id);
   document.getElementById("EditName").value = entry["first_name"];
   document.getElementById("EditSurname").value = entry["surname"];
   document.getElementById("EditPreferredName").value = entry["preferred_name"];
@@ -231,6 +231,10 @@ function deleteEmployee() {
   secondHalf.shift();
   let finalArray = firstHalf.concat(secondHalf);
   localStorage.setItem("allEntries", JSON.stringify(finalArray));
+  allEntries = JSON.parse(localStorage.getItem("allEntries"));
+  allEntries.forEach((entry) => {
+
+  });
   window.location.reload();
 }
 function getValueById(id) {
