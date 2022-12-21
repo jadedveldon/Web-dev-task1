@@ -148,7 +148,7 @@ function addEmployee() {
   let department = getValueById("department").trim();
   let number = getValueById("number").trim();
   let skypeID = getValueById("skypeID").trim();
-  let empId = (typeof entry["empId"] === 'undefined') ? 0:entry["empId"]+1;
+  let empId = typeof entry["empId"] === "undefined" ? 0 : entry["empId"] + 1;
   let user = {};
   user["empId"] = empId;
   user["first_name"] = first_name;
@@ -172,7 +172,7 @@ function addEmployee() {
 
 let CurrentID;
 function viewEmployee(id) {
-  let entry = currentEntries.find(entry => entry["empId"] == id);
+  let entry = currentEntries.find((entry) => entry["empId"] == id);
   console.log(id);
   document.getElementById(
     "DisplayName"
@@ -211,7 +211,7 @@ function viewEmployee(id) {
 function editEmployee() {
   let currentEntries = JSON.parse(localStorage.getItem("allEntries"));
   let id = CurrentID;
-  let entry = currentEntries.find(entry => entry["empId"] == id);
+  let entry = currentEntries.find((entry) => entry["empId"] == id);
   document.getElementById("EditName").value = entry["first_name"];
   document.getElementById("EditSurname").value = entry["surname"];
   document.getElementById("EditPreferredName").value = entry["preferred_name"];
@@ -232,9 +232,7 @@ function deleteEmployee() {
   let finalArray = firstHalf.concat(secondHalf);
   localStorage.setItem("allEntries", JSON.stringify(finalArray));
   allEntries = JSON.parse(localStorage.getItem("allEntries"));
-  allEntries.forEach((entry) => {
-
-  });
+  allEntries.forEach((entry) => {});
   window.location.reload();
 }
 function getValueById(id) {
@@ -289,58 +287,52 @@ function displayResult(displayInfo) {
   displayBox.innerHTML += newCard;
 }
 
-
-
-
-
-function filter(alphabet,id,value,category){
+function filter(alphabet, id, value, category) {
   displayBox.innerHTML = " ";
   let FilterEntries = [];
   globalDropdown = getValueById("categories");
-  if(id!=null && value!=null && category!=null){
+  if (id != null && value != null && category != null) {
     globalId = id;
     globalValue = value;
     globalCategory = category;
     const filterItems = document.getElementsByClassName("side-filter-item");
     const filterSelected = document.querySelector(`#${id}`);
     Object.keys(filterItems).forEach((key) => {
-    filterItems[key].classList.remove("side-filter-item--active");
+      filterItems[key].classList.remove("side-filter-item--active");
     });
     filterSelected.classList.add("side-filter-item--active");
   }
-  if(alphabet != null){
+  if (alphabet != null) {
     globalAlphabet = alphabet;
   }
-  if(alphabet == null && id == null){
+  if (alphabet == null && id == null) {
     globalSearch = getValueById("SearchField");
   }
   FilterEntries = currentEntries.filter((entry) => {
     let sideFilterConditionOn = globalId != null;
     let topFilterConditionOn = globalAlphabet != null;
     let searchFilterConditionOn = globalSearch != null;
-    if (sideFilterConditionOn){
-      if(entry[globalCategory] != globalValue){
-        return false
+    if (sideFilterConditionOn) {
+      if (entry[globalCategory] != globalValue) {
+        return false;
       }
     }
-    if(topFilterConditionOn){
+    if (topFilterConditionOn) {
       let localValue = entry[globalDropdown];
       localValue = localValue.toLowerCase();
-      if(localValue[0] != globalAlphabet.toLowerCase()){
-        return false
+      if (localValue[0] != globalAlphabet.toLowerCase()) {
+        return false;
       }
     }
-    if(searchFilterConditionOn){
-
+    if (searchFilterConditionOn) {
       let checker = entry[globalDropdown];
       let len = globalSearch.length;
-      if(checker.slice(0, len).toLowerCase() != globalSearch.toLowerCase()){
-        return false
+      if (checker.slice(0, len).toLowerCase() != globalSearch.toLowerCase()) {
+        return false;
       }
     }
-    return true
-    
-  })
+    return true;
+  });
   FilterEntries.forEach(displayResult);
 }
 function validateName(type) {

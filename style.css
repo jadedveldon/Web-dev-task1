@@ -1,83 +1,101 @@
-.Navbar{
+.Navbar {
     display: flex;
     margin-top: 2%;
     border-bottom: 1px solid rgb(176, 176, 176);
     margin-left: 2%;
     width: auto;
 }
-.main-content{
+
+.main-content {
     display: flex;
     margin-top: 30px;
     border-left: 50px;
 }
-.note{
+
+.note {
     display: flex;
 }
-.right-content{
+
+.right-content {
     display: flex;
 }
-.left-content{
-    top:50px;
+
+.left-content {
+    top: 50px;
     position: absolute;
     left: 1000px;
-    display: flex;  
-    float: left; 
+    display: flex;
+    float: left;
     width: 450px;
 }
-.category-filter{
-    margin-top  : 5px;
+
+.category-filter {
+    margin-top: 5px;
 }
-#add-emp{
-margin-left: 145px;
+
+#add-emp {
+    margin-left: 145px;
 }
-.search-filter > label {
+
+.search-filter>label {
     font-size: 20px;
 }
-.username{
+
+.username {
     margin-top: 35px;
 }
-#userName{
+
+#userName {
     font-size: 30px;
 }
-#welcome{
+
+#welcome {
     color: rgb(62, 181, 235);
     font-weight: 100;
     margin-top: 100px;
 }
-#Nav-Head{
+
+#Nav-Head {
     color: rgb(62, 181, 235);
     font-weight: 100;
     margin-bottom: 0px;
     font-size: 35px;
 }
-.content{
+
+.content {
     display: inline;
     padding-left: 2%;
     width: 500px;
 }
-#Nav-sub{
-    font-size: 20px;  
+
+#Nav-sub {
+    font-size: 20px;
 }
-#profile-pic{
+
+#profile-pic {
     height: 70px;
     width: 70px;
     margin-left: 20px;
 }
+
 .alphabets {
     display: flex;
     margin-bottom: 10px;
 }
-.search-filter{
+
+.search-filter {
     margin-top: 25px;
     margin-left: 20px;
     margin-bottom: 10px;
     display: flex;
     gap: 200px;
-} 
-#clear{
+}
+
+#clear {
     margin-left: 20px;
 }
-.alphabets > button {
+
+.alphabets>button {
     background-color: DodgerBlue;
     color: white;
     width: 40px;
@@ -86,8 +104,9 @@ margin-left: 145px;
     line-height: 40px;
     font-size: 18px;
     border: none;
-  }
-#card-display-box{
+}
+
+#card-display-box {
     display: flex;
     flex-wrap: wrap;
     border: 1px solid rgb(200, 200, 200);
@@ -95,10 +114,12 @@ margin-left: 145px;
     margin: 10px;
     align-content: flex-start;
 }
-.card-body{
+
+.card-body {
     display: flex;
 }
-.card{
+
+.card {
     background-color: #efeeeeee;
     width: 100px;
     height: 80px;
@@ -107,48 +128,58 @@ margin-left: 145px;
     margin-right: 10px;
     cursor: pointer;
 }
-dd{
+
+dd {
     cursor: pointer;
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.card-title{
+
+.card-title {
     margin-top: 3px;
     margin-bottom: 3px;
 }
-.card-subtitle{
+
+.card-subtitle {
     margin-top: 3px;
     margin-bottom: 3px;
     height: auto;
     width: auto;
 }
-.card-img  {
+
+.card-img {
     overflow: hidden;
-    max-height: 70px;  
+    max-height: 70px;
     max-width: 70px;
     width: auto;
     height: auto;
 }
-.card-dp{
+
+.card-dp {
     margin-top: 5px;
     margin-left: 5px;
 }
-.card-content{
+
+.card-content {
     margin-left: 5px;
     margin-top: 5px;
 }
-.fa{
-    color:  #8d8d8dee;
+
+.fa {
+    color: #8d8d8dee;
 }
-.side-filter{
+
+.side-filter {
     margin-left: 50px;
     margin-right: 50px;
 }
-.wrong-format{
+
+.wrong-format {
     color: red;
     font-size: small;
 }
-.error-content{
+
+.error-content {
     display: none;
 }
 
