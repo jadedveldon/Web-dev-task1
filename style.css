@@ -1,75 +1,72 @@
 .Navbar {
     display: flex;
-    margin-top: 2%;
     border-bottom: 1px solid rgb(176, 176, 176);
-    margin-left: 2%;
-    width: auto;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95vw;
 }
 
 .main-content {
     display: flex;
-    margin-top: 30px;
-    border-left: 50px;
 }
 
 .note {
     display: flex;
 }
-
+.logo{
+    width: 15vw;
+    height: 18vh;
+    position: relative;
+}
 .right-content {
     display: flex;
 }
 
 .left-content {
-    top: 50px;
-    position: absolute;
-    left: 1000px;
     display: flex;
     float: left;
-    width: 450px;
+    width: 30vw;
+    position: relative;
 }
 
 .category-filter {
-    margin-top: 5px;
 }
 
 #add-emp {
-    margin-left: 145px;
 }
 
 .search-filter>label {
-    font-size: 20px;
 }
 
 .username {
-    margin-top: 35px;
 }
 
 #userName {
-    font-size: 30px;
 }
 
 #welcome {
     color: rgb(62, 181, 235);
     font-weight: 100;
-    margin-top: 100px;
 }
 
 #Nav-Head {
     color: rgb(62, 181, 235);
     font-weight: 100;
     margin-bottom: 0px;
-    font-size: 35px;
+    font-size: 2.7em;
 }
 
 .content {
     display: inline;
     padding-left: 2%;
-    width: 500px;
+    width: 40vw;
+    padding-top: 4vh;
 }
 
 #Nav-sub {
-    font-size: 20px;
+    font-size: 1.5em;
 }
 
 #profile-pic {
