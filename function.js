@@ -99,7 +99,7 @@ editEmpImg.addEventListener("change", function (f) {
 
 //card html generated here
 function cardGenerator(p_name, designation, dept, baseImg, empId) {
-  let cardTemplate = `<div class="card" onclick="viewEmployee(id)" data-toggle="modal" name="cardview" data-target="#employeeViewForm" style="width: 27rem;" id = ${empId}>
+  let cardTemplate = `<div class="card" onclick="viewEmployee(id)" data-toggle="modal" name="cardview" data-target="#employeeViewForm" id = ${empId}>
     <div class="card-body">
     <div class="card-img">
         <img class="card-dp" src="data:image/png;base64,${baseImg}" height="70px" width="70px">

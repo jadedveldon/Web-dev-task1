@@ -2,7 +2,7 @@
     display: flex;
     border-bottom: 1px solid rgb(176, 176, 176);
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     margin-left: auto;
     margin-right: auto;
     width: 95vw;
@@ -10,6 +10,10 @@
 
 .main-content {
     display: flex;
+    width: 95vw;
+    margin-top: 1vh;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .note {
@@ -27,23 +31,25 @@
 .left-content {
     display: flex;
     float: left;
-    width: 30vw;
+    padding-bottom: 2%;
+    width: 34vw;
     position: relative;
+    flex-direction: row-reverse;
 }
 
-.category-filter {
+.search-filter {
+    justify-content: space-between;
+    padding-top: 3vh;
 }
 
-#add-emp {
-}
-
-.search-filter>label {
-}
-
-.username {
+.note{
+    padding-top: 2vh;
 }
 
 #userName {
+    font-size: 3.3rem;
+    margin: 0;
+    padding-top: 2.2rem;
 }
 
 #welcome {
@@ -70,35 +76,32 @@
 }
 
 #profile-pic {
-    height: 70px;
-    width: 70px;
-    margin-left: 20px;
+    height: 8vh;
 }
 
 .alphabets {
     display: flex;
-    margin-bottom: 10px;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .search-filter {
-    margin-top: 25px;
-    margin-left: 20px;
-    margin-bottom: 10px;
     display: flex;
-    gap: 200px;
 }
 
 #clear {
-    margin-left: 20px;
 }
 
 .alphabets>button {
     background-color: DodgerBlue;
     color: white;
-    width: 40px;
+    width: max-content;
     margin: 2px;
     text-align: center;
-    line-height: 40px;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    line-height: max-content;
     font-size: 18px;
     border: none;
 }
@@ -107,9 +110,10 @@
     display: flex;
     flex-wrap: wrap;
     border: 1px solid rgb(200, 200, 200);
-    height: 400px;
-    margin: 10px;
     align-content: flex-start;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-evenly
 }
 
 .card-body {
@@ -118,7 +122,7 @@
 
 .card {
     background-color: #efeeeeee;
-    width: 100px;
+    width: 27rem;
     height: 80px;
     margin-top: 20px;
     margin-left: 10px;
@@ -167,8 +171,9 @@ dd {
 }
 
 .side-filter {
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15vw;
 }
 
 .wrong-format {
