@@ -223,5 +223,15 @@ dd {
     #Nav-sub{
         font-size: 1.3rem;
     }
-
+}
+@media screen and (max-width:680px) {
+    #userName{
+        font-size: 1.3rem;
+    }
+    #Nav-Head{
+        font-size: 1.5rem;
+    }
+    #Nav-sub{
+        font-size: 1.1rem;
+    }
 }
