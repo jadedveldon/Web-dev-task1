@@ -21,11 +21,11 @@
 }
 .logo{
     width: 15vw;
-    height: 18vh;
-    position: relative;
+    height: auto;
 }
 .right-content {
     display: flex;
+    align-items: center;
 }
 
 .left-content {
@@ -35,6 +35,7 @@
     width: 34vw;
     position: relative;
     flex-direction: row-reverse;
+    align-items: center;
 }
 
 .search-filter {
@@ -81,7 +82,7 @@
 
 .alphabets {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
@@ -89,7 +90,8 @@
     display: flex;
 }
 
-#clear {
+#add-emp {
+width: fit-content;
 }
 
 .alphabets>button {
@@ -173,7 +175,7 @@ dd {
 .side-filter {
     margin-left: auto;
     margin-right: auto;
-    width: 15vw;
+    padding-right: 5rem;
 }
 
 .wrong-format {
@@ -191,4 +193,35 @@ dd {
 
 .side-filter-item--active {
     color: blue;
+}
+
+@media screen and (max-width:790px) {
+    .search-filter {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;  
+    }
+}
+@media screen and (max-width:850px) {
+    #userName{
+        font-size: 1.8rem;
+    }
+    #Nav-Head{
+        font-size: 3rem;
+    }
+    #Nav-sub{
+        font-size: 1.5rem;
+    }
+}
+@media screen and (max-width:680px) {
+    #userName{
+        font-size: 1.5rem;
+    }
+    #Nav-Head{
+        font-size: 2rem;
+    }
+    #Nav-sub{
+        font-size: 1.3rem;
+    }
+
 }
